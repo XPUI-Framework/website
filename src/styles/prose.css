@@ -1,22 +1,10 @@
 /* A synced page as it reads: the repository's markdown, typeset. */
 
-/*
- * A reading column in the middle, and room at the sides for what needs it: a table, a code
- * block, a diagram or a figure spans the whole article rather than being squeezed.
- */
+/* One column: prose, code, tables and diagrams share an edge, so the page reads as one page. */
 .prose {
-  display: grid;
-  grid-template-columns:
-    [full-start] minmax(0, 1fr)
-    [content-start] minmax(0, var(--measure))
-    [content-end] minmax(0, 1fr)
-    [full-end];
+  max-width: var(--measure);
   min-width: 0;
 }
-
-.prose > * { grid-column: content; }
-
-.prose > :is(table, pre, figure, .diagram, .astro-code, .code-shell) { grid-column: full; }
 
 .prose > h1 { margin: 0 0 1rem; font-size: clamp(1.75rem, 5vw, 2.25rem); }
 
@@ -34,13 +22,12 @@
 
 .prose table {
   display: block;
-  width: fit-content;
+  width: 100%;
   max-width: 100%;
   max-width: 100%;
   overflow-x: auto;
   margin-block: 1.25rem;
   border-collapse: collapse;
-  font-size: 0.9375rem;
 }
 
 .prose :is(th, td) {
@@ -53,7 +40,7 @@
 /* A name in a table is one word: the column takes the room it needs, and the table scrolls if it must. */
 .prose :is(th, td) code { white-space: nowrap; }
 
-.prose th { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; }
+.prose th { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; }
 
 
 .prose blockquote { margin-inline: 0; padding-left: 1.25rem; box-shadow: inset 3px 0 0 var(--line); color: var(--ink-soft); }

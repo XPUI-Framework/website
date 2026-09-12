@@ -17,7 +17,6 @@
       "pages": [
         "xpui/docs/reference.md",
         "xpui/docs/architecture.md",
-        "xpui/docs/design.md",
         "xpui/docs/host.md",
         "xpui/docs/writing-a-backend.md",
         "xpui/docs/writing-a-widget.md",
@@ -31,8 +30,7 @@
           "page": "xpui-chrome/README.md",
           "label": "Overview"
         },
-        "xpui-chrome/docs/components.md",
-        "xpui-chrome/docs/design.md"
+        "xpui-chrome/docs/components.md"
       ]
     },
     {
@@ -44,7 +42,6 @@
         },
         "xpui-boards/docs/boards.md",
         "xpui-boards/docs/adding-a-board.md",
-        "xpui-boards/docs/design.md",
         {
           "page": "xpui-boards/core/README.md",
           "label": "xpui-boards-core"
@@ -70,14 +67,15 @@
           "page": "xpui-backends/README.md",
           "label": "Overview"
         },
-        "xpui-backends/docs/choosing-a-backend.md",
+        "xpui-backends/docs/choosing-a-backend.md"
+      ]
+    },
+    {
+      "label": "embedded-graphics",
+      "pages": [
         {
           "page": "xpui-backends/embedded_graphics/README.md",
           "label": "xpui-embedded-graphics"
-        },
-        {
-          "page": "xpui-backends/embedded_graphics/docs/design.md",
-          "label": "Design decisions"
         },
         {
           "page": "xpui-backends/embedded_graphics/docs/hardware.md",
@@ -86,7 +84,12 @@
         {
           "page": "xpui-backends/embedded_graphics/docs/screenshots.md",
           "label": "Screenshot tests"
-        },
+        }
+      ]
+    },
+    {
+      "label": "FreeInkUI",
+      "pages": [
         {
           "page": "xpui-backends/fui/README.md",
           "label": "xpui-fui"
@@ -96,17 +99,18 @@
           "label": "The FreeInkUI shim"
         },
         {
-          "page": "xpui-backends/fui/docs/design.md",
-          "label": "Why it has this shape"
-        },
-        {
           "page": "xpui-backends/fui/docs/firmware.md",
           "label": "Adding the shim"
         },
         {
           "page": "xpui-backends/fui/docs/coverage.md",
           "label": "FreeInkUI coverage"
-        },
+        }
+      ]
+    },
+    {
+      "label": "Proving a backend",
+      "pages": [
         {
           "page": "xpui-backends/screenshot/README.md",
           "label": "xpui-screenshot"
@@ -120,8 +124,7 @@
           "page": "xpui-simulator/README.md",
           "label": "Overview"
         },
-        "xpui-simulator/docs/running.md",
-        "xpui-simulator/docs/design.md"
+        "xpui-simulator/docs/running.md"
       ]
     },
     {
@@ -132,7 +135,6 @@
           "label": "Overview"
         },
         "xpui-gallery/docs/conformance.md",
-        "xpui-gallery/docs/design.md",
         {
           "page": "xpui-gallery/gallery/README.md",
           "label": "The screens"

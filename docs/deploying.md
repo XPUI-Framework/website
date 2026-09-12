@@ -1,62 +1,105 @@
 # Deploying
 
-## How a change reaches xpui.rs
+`XPUI-Framework/website` is public, `main` is its branch, and `.github/workflows/ci.yml` runs the
+gate on every push and pull request. On `main`, a green gate uploads the `dist/` it just checked
+and deploys it to GitHub Pages. Nothing deploys from a red gate, and nothing deploys from a pull
+request.
 
-A push to `main` runs `.github/workflows/ci.yml`: `npm ci`, then `./build-and-test.sh`, then
-the `dist/` that passed is uploaded and deployed to GitHub Pages. A pull request runs the gate
-and deploys nothing. The actions are pinned to commit SHAs; Dependabot proposes the updates.
+## Going live, in order
 
-The site's content is whatever `content/` holds at that commit, so updating the documentation
-is: run `npm run sync` against pushed sibling checkouts, read the diff, commit it.
+Do these in this order: the first two are why CI is red today.
 
-## One-time setup
+### 1. Push `brand`
 
-All of this is in GitHub's and Cloudflare's web interfaces; nothing here has a command.
+```bash
+git -C ../brand push -u origin main
+```
 
-**GitHub**
+The site serves the mark and the favicon from files synced out of `brand`, and the sync refuses
+a commit that is not on `origin/main` — a page must not point at a commit nobody else can see.
+Until then, every CI run fails on `synced content matches the manifest`. `brand` may stay
+private: the site carries the copies it needs.
 
-1. `XPUI-Framework/website` is public — GitHub Pages on the free plan serves public
-   repositories only.
-2. Settings → Pages → Source: **GitHub Actions**.
-3. Organisation settings → Pages → add `xpui.rs` as a verified domain. GitHub shows a TXT
-   record named `_github-pages-challenge-XPUI-Framework`; add it in Cloudflare.
-4. After the first green deploy: Settings → Pages → Custom domain `xpui.rs`. Wait for the
-   certificate, then tick **Enforce HTTPS**.
+### 2. Sync, check, commit, push
 
-**Cloudflare DNS** — created **DNS only** (grey cloud) so GitHub can issue the certificate:
+```bash
+npm run sync          # records brand as pushed
+./build-and-test.sh   # every stage green
+git add -A && git commit && git push
+```
+
+The push runs the gate in CI. It will not deploy yet — Pages has no source — but it must be
+green before the next step is worth doing.
+
+### 3. Turn Pages on
+
+**Settings → Pages → Build and deployment → Source: GitHub Actions.** Nothing else there; no
+branch, no folder. Re-run the last workflow (Actions → the run → *Re-run all jobs*) and it
+deploys. The site is then at `https://xpui-framework.github.io/website/` until the domain is set.
+
+### 4. Verify the domain for the organisation
+
+**Organisation settings → Pages → Add a domain → `xpui.rs`.** GitHub gives a TXT record named
+`_github-pages-challenge-XPUI-Framework`; add it in Cloudflare and press verify. This stops
+anyone else pointing a GitHub site at the domain later. It is optional, and worth the two minutes.
+
+### 5. The DNS records, at Cloudflare
+
+Create these **DNS only** — the grey cloud. GitHub issues the certificate over HTTP, and the
+proxy gets in the way of that.
 
 | Type | Name | Value |
 |---|---|---|
-| A | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
-| AAAA | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153` |
+| AAAA | `@` | `2606:50c0:8001::153` |
+| AAAA | `@` | `2606:50c0:8002::153` |
+| AAAA | `@` | `2606:50c0:8003::153` |
 | CNAME | `www` | `xpui-framework.github.io` |
 
-**Mail stays with iCloud.** Leave its records exactly as they are and never proxy them: the MX
-records to `mx01.mail.icloud.com` and `mx02.mail.icloud.com`, the SPF TXT with
-`include:icloud.com`, the `apple-domain` TXT, and the `sig1._domainkey` CNAME. `contact@` and
-`conduct@xpui.rs` must exist as iCloud custom-domain addresses: every code of conduct names
-them.
+**Leave the mail records exactly as they are, and never proxy them**: the MX records to
+`mx01.mail.icloud.com` and `mx02.mail.icloud.com`, the SPF TXT with `include:icloud.com`, the
+`apple-domain` TXT, and the `sig1._domainkey` CNAME. Nothing here touches them.
 
-**Then, for analytics without a script:** SSL/TLS mode **Full (strict)**, and switch the A,
-AAAA and `www` records to **Proxied**. Cloudflare's zone analytics counts requests at its
-edge and adds nothing to the page.
+### 6. Set the custom domain
 
-**Leave these switched off**, because each one injects a script into every page, which breaks
-the one-script rule and which the CSP refuses: Email Address Obfuscation (the footer carries
-`contact@xpui.rs`), Rocket Loader, Web Analytics' automatic setup, Zaraz, Speed Brain.
+**Settings → Pages → Custom domain: `xpui.rs` → Save.** GitHub checks the DNS, then asks a
+certificate authority for a certificate; that takes a few minutes and sometimes up to an hour.
+The site also ships `public/CNAME`, which carries `xpui.rs` into every build, so a deploy can
+never drop the domain.
 
-## Checking it
+When the certificate is ready, tick **Enforce HTTPS**.
+
+### 7. Check it
 
 ```bash
 curl -sS -o /dev/null -w '%{http_code}\n' -L https://xpui.rs   # 200
-curl -s https://xpui.rs/ | grep -c '<script'                    # 1
-curl -s https://xpui.rs/ | grep -c cdn-cgi                      # 0: nothing injected
-curl -sI https://www.xpui.rs | grep -i '^location'              # redirects to https://xpui.rs/
+curl -s https://xpui.rs/ | grep -c '<script'                    # 1, the theme script
+curl -sI https://www.xpui.rs | grep -i '^location'              # redirects to the apex
 dig +short MX xpui.rs                                           # still iCloud
 ```
 
-## When the certificate does not renew
+The first line is also `30-publishing.md` §0's own check, the one that gates making the
+repositories public.
 
-GitHub renews its certificate over HTTP, which Cloudflare's proxy can get in the way of. If
-Settings → Pages reports a certificate problem, switch the three records to DNS only, wait for
-GitHub to renew, and proxy them again.
+### 8. Afterwards, if you want Cloudflare's analytics
+
+Cloudflare counts only what it proxies. Once the certificate is issued and HTTPS is enforced:
+set SSL/TLS to **Full (strict)**, then switch the A, AAAA and `www` records to **Proxied**.
+Zone analytics then counts requests at the edge and adds nothing to the page.
+
+**Leave these off, permanently.** Each injects a script into every page, which breaks the
+one-script rule and which the site's own Content-Security-Policy refuses: Email Address
+Obfuscation, Rocket Loader, Web Analytics' automatic setup, Zaraz, Speed Brain.
+
+## Afterwards
+
+- **Every later change** is the loop in [updating.md](updating.md): sync, read the diff, run the
+  gate, commit, push. CI deploys what it checked.
+- **If the certificate ever fails to renew** behind the proxy, switch the three records back to
+  DNS only, let GitHub renew, then proxy them again.
+- **Dependabot** opens dependency pull requests here. They run the same gate, so a red one is
+  telling you something: `typescript` 7 cannot be merged while `@astrojs/check` asks for 5 or 6.

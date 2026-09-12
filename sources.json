@@ -28,7 +28,8 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md"
+        "!docs/contributing.md",
+        "!docs/design.md"
       ]
     },
     {
@@ -37,7 +38,8 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md"
+        "!docs/contributing.md",
+        "!docs/design.md"
       ]
     },
     {
@@ -47,7 +49,8 @@
         "README.md",
         "docs/*.md",
         "!docs/contributing.md",
-        "*/README.md"
+        "*/README.md",
+        "!docs/design.md"
       ]
     },
     {
@@ -60,7 +63,8 @@
         "*/README.md",
         "*/docs/*.md",
         "fui/cpp/README.md",
-        "!abi-check/README.md"
+        "!abi-check/README.md",
+        "!*/docs/design.md"
       ]
     },
     {
@@ -69,7 +73,8 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md"
+        "!docs/contributing.md",
+        "!docs/design.md"
       ]
     },
     {
@@ -82,7 +87,8 @@
         "*/README.md",
         "gallery/src/screens.rs",
         "gallery/tests/screenshots/menu_x3.png",
-        "gallery/tests/screenshots/controls_x3.png"
+        "gallery/tests/screenshots/controls_x3.png",
+        "!docs/design.md"
       ]
     },
     {

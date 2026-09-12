@@ -3,7 +3,6 @@
     "hero": {
       "headline": "Declarative UI for e-ink, in Rust.",
       "lede": "Small, `no_std`, dependency-free. You write the screen; the framework handles layout, focus, input and the redraw.",
-      "board": "x3",
       "screen": "gallery/tests/screenshots/menu_x3.png",
       "alt": "The gallery's menu on an Xteink X3"
     },
@@ -13,7 +12,6 @@
       "file": "gallery/src/screens.rs",
       "within": "impl Screen for Controls",
       "item": "fn body(&self)",
-      "board": "x3",
       "golden": "gallery/tests/screenshots/controls_x3.png",
       "alt": "The controls screen: brightness and warmth steppers, and a frontlight toggle"
     },

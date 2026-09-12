@@ -13,8 +13,8 @@ npm run dev         # http://localhost:4321
 
 After a change in another repository, [docs/updating.md](docs/updating.md) is the path to the
 live site. How the site is put together, how it is synced, what the gate checks, and how it
-reaches `xpui.rs` are in [`docs/`](docs/architecture.md). The sync needs a Chromium for diagrams
-and `cargo` for the device drawings.
+reaches `xpui.rs` are in [`docs/`](docs/architecture.md). The sync needs a Chromium to draw the
+diagrams: `npx puppeteer browsers install chrome`, or `CHROME` pointing at one you have.
 
 ## License
 

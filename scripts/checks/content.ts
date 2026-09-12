@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { BOARDS_FILE, blobId, CONTENT_DIR, MANIFEST_FILE, readManifest } from '../../src/lib/manifest.ts';
+import { blobId, CONTENT_DIR, MANIFEST_FILE, readManifest } from '../../src/lib/manifest.ts';
 import { type Findings, SITE, walk } from './files.ts';
 
 /** Every synced file is byte for byte the blob its manifest names, nothing else is there, and every source is pushed. */
@@ -28,14 +28,6 @@ export function syncedContentMatches(): Findings {
       if (blobId(readFileSync(join(content, file))) !== diagram.blob) findings.push(`${file}: edited by hand — npm run sync redraws it`);
     } catch {
       findings.push(`${file}: missing — npm run sync draws it`);
-    }
-  }
-  if (manifest.boards) {
-    expected.add(BOARDS_FILE);
-    try {
-      if (blobId(readFileSync(join(content, BOARDS_FILE))) !== manifest.boards.blob) findings.push(`${BOARDS_FILE}: edited by hand — npm run sync exports it again`);
-    } catch {
-      findings.push(`${BOARDS_FILE}: missing — npm run sync exports it`);
     }
   }
   for (const path of walk(content).map((p) => relative(content, p))) {

@@ -6,8 +6,8 @@ pre {
   overflow-x: auto;
   border-radius: var(--radius-l);
   background: var(--code-surface, var(--tint));
-  font-size: 0.8125rem;
-  line-height: 1.5;
+  font-size: 0.9375rem;
+  line-height: 1.55;
   tab-size: 4;
   scrollbar-width: thin;
 }
@@ -22,7 +22,7 @@ pre[data-language='text'] { line-height: 1.15; }
   border-radius: 0.35em;
   background: var(--tint-strong);
   color: var(--code-ink);
-  font-size: 0.86em;
+  font-size: 0.9em;
   overflow-wrap: break-word;
 }
 

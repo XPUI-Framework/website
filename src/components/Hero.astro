@@ -6,12 +6,11 @@ import Mark from './Mark.astro';
 interface Props {
   headline: string;
   lede: string;
-  board: string;
   screen: string;
   alt: string;
 }
 
-const { headline, lede, board, screen, alt } = Astro.props;
+const { headline, lede, screen, alt } = Astro.props;
 ---
 
 <section class="hero page" aria-labelledby="hero-title">
@@ -25,7 +24,7 @@ const { headline, lede, board, screen, alt } = Astro.props;
     </p>
   </div>
   <div class="picture">
-    <Device slug={board} screen={screen} alt={alt} />
+    <Device screen={screen} alt={alt} />
   </div>
 </section>
 

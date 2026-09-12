@@ -19,9 +19,18 @@ const sections = Astro.props.headings.filter((h) => h.depth === 2 || h.depth ===
 <style>
   .toc { margin: 0; padding: 0; list-style: none; font-size: 0.875rem; }
 
-  a { display: block; padding-block: 0.3rem; color: var(--ink-soft); text-decoration: none; }
+  a {
+    display: block;
+    padding: 0.3rem 0 0.3rem 0.75rem;
+    border-left: 2px solid transparent;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 120ms ease, border-color 120ms ease;
+  }
 
   a:hover { color: var(--ink); }
 
-  .depth-3 { padding-left: 0.875rem; }
+  a[aria-current] { border-left-color: var(--ink); color: var(--ink); font-weight: 500; }
+
+  .depth-3 a { padding-left: 1.625rem; }
 </style>

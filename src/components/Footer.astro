@@ -3,14 +3,17 @@ import Mark from './Mark.astro';
 ---
 
 <footer class="footer">
-  <div class="page row">
-    <a class="home" href="/" aria-label="XPUI, home"><Mark size={32} /></a>
-    <p class="small">© 2026 Thiago Holanda · <a href="https://github.com/XPUI-Framework/xpui-framework/blob/main/LICENSE">MIT licence</a></p>
-    <ul class="links">
-      <li><a href="/docs/">Docs</a></li>
-      <li><a href="https://github.com/XPUI-Framework">GitHub</a></li>
-      <li><span class="mail">contact [at] xpui.rs</span></li>
-    </ul>
+  <div class="page">
+    <div class="row">
+      <a class="home" href="/" aria-label="XPUI, home"><Mark size={32} /></a>
+      <p class="small">© 2026 Thiago Holanda · <a href="https://github.com/XPUI-Framework/xpui-framework/blob/main/LICENSE">MIT licence</a></p>
+      <ul class="links">
+        <li><a href="/docs/">Docs</a></li>
+        <li><a href="https://github.com/XPUI-Framework">GitHub</a></li>
+        <li><span class="mail">contact [at] xpui.rs</span></li>
+      </ul>
+    </div>
+    <p class="notice">X3, X4 Pro rights are reserved to Xteink. This project is not affiliated with, endorsed by, or sponsored by Xteink.</p>
   </div>
 </footer>
 
@@ -23,7 +26,15 @@ import Mark from './Mark.astro';
 
   .small { flex: 1; margin: 0; color: var(--ink-soft); font-size: 0.8125rem; }
 
-  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 0; list-style: none; font: 0.8125rem var(--font-mono); }
+  /* Its own last line, away from the credits and the links it has nothing to do with. */
+  .notice {
+    max-width: 42rem;
+    color: var(--ink-faint);
+    font-size: 0.75rem;
+    line-height: 1.55;
+  }
+
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0 0 0 auto; padding: 0; list-style: none; font: 0.8125rem var(--font-mono); }
 
   .links a { color: var(--ink-soft); text-decoration: none; }
 

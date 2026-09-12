@@ -3,9 +3,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { dirname, join, relative, resolve } from 'node:path';
 import { DIAGRAMS_DIR, diagramKey, mermaidFences } from '../src/lib/diagrams.ts';
 import { matches, selects } from '../src/lib/glob.ts';
-import { BOARDS_FILE, blobId, CONTENT_DIR, MANIFEST_FILE, type Manifest, serialise } from '../src/lib/manifest.ts';
-import { boardsKey, exportBoards } from './boards.ts';
-import { mermaidConfigText, renderDiagrams } from './diagrams.ts';
+import { blobId, CONTENT_DIR, MANIFEST_FILE, type Manifest, serialise } from '../src/lib/manifest.ts';
+import { diagramsFingerprint, renderDiagrams } from './diagrams.ts';
 import { LITTER } from './checks/files.ts';
 import * as git from './git.ts';
 
@@ -68,7 +67,7 @@ function syncRepo(source: Source, manifest: Manifest, produced: Set<string>): st
 /** Every mermaid fence in a page, rendered once per distinct diagram; unchanged diagrams are kept as they are. */
 async function syncDiagrams(manifest: Manifest, previous: Manifest | undefined, produced: Set<string>): Promise<string> {
   const cli = JSON.parse(readFileSync(join(site, 'node_modules/@mermaid-js/mermaid-cli/package.json'), 'utf8')).version;
-  manifest.mermaid = createHash('sha256').update(`${cli}\n${mermaidConfigText()}`).digest('hex');
+  manifest.mermaid = createHash('sha256').update(diagramsFingerprint(cli)).digest('hex');
   const definitions = new Map<string, string>();
   const from = new Map<string, string[]>();
   for (const [dir, repo] of Object.entries(manifest.repos)) {
@@ -93,30 +92,12 @@ async function syncDiagrams(manifest: Manifest, previous: Manifest | undefined, 
   return `${'diagrams'.padEnd(16)} ${definitions.size} distinct, ${todo.size} rendered`;
 }
 
-/** The boards' bodies, exported from xpui-boards at its synced commit; exported again only when that changes. */
-function syncBoards(manifest: Manifest, previous: Manifest | undefined, produced: Set<string>): string {
-  const boards = manifest.repos['xpui-boards'];
-  const xpui = manifest.repos.xpui;
-  if (!boards || !xpui) return `${'boards'.padEnd(16)} skipped: xpui-boards and xpui are not both sources`;
-  const key = boardsKey(boards.sha, xpui.sha);
-  const file = join(content, BOARDS_FILE);
-  const fresh = previous?.boards?.key !== key || !existsSync(file);
-  if (fresh) {
-    const root = resolve(site, sources.root);
-    writeIfChanged(file, Buffer.from(exportBoards(join(root, 'xpui-boards'), boards.sha, join(root, 'xpui'), xpui.sha)));
-  }
-  produced.add(file);
-  manifest.boards = { key, blob: blobId(readFileSync(file)) };
-  return `${'boards'.padEnd(16)} ${JSON.parse(readFileSync(file, 'utf8')).length} described, ${fresh ? 'exported' : 'unchanged'}`;
-}
-
 async function main(): Promise<void> {
   const manifestPath = join(content, MANIFEST_FILE);
   const previous: Manifest | undefined = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : undefined;
   const manifest: Manifest = { schema: 1, repos: {}, diagrams: {}, mermaid: '' };
   const produced = new Set([manifestPath]);
   const report = sources.repos.map((source) => syncRepo(source, manifest, produced));
-  report.push(syncBoards(manifest, previous, produced));
   report.push(await syncDiagrams(manifest, previous, produced));
 
   let removed = 0;

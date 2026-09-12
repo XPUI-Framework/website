@@ -23,11 +23,7 @@ export interface Manifest {
   diagrams: Record<string, SyncedDiagram>;
   /** A hash of the Mermaid configuration and version the diagrams were drawn with. */
   mermaid: string;
-  /** `boards.json`, exported from `xpui-boards` at its synced commit. */
-  boards?: { key: string; blob: string };
 }
-
-export const BOARDS_FILE = 'boards.json';
 
 export const CONTENT_DIR = 'content';
 export const MANIFEST_FILE = 'manifest.json';

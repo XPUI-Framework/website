@@ -7,8 +7,8 @@ export interface Site {
 }
 
 export interface Home {
-  hero: { headline: string; lede: string; board: string; screen: string; alt: string };
-  code: { eyebrow: string; title: string; file: string; within: string; item: string; board: string; golden: string; alt: string };
+  hero: { headline: string; lede: string; screen: string; alt: string };
+  code: { eyebrow: string; title: string; file: string; within: string; item: string; golden: string; alt: string };
   paths: { eyebrow: string; title: string; cards: { title: string; pages: string[] }[] };
   repositories: { eyebrow: string; title: string; groups: { title: string; repos: string[] }[] };
 }

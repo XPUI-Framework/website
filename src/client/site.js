@@ -24,6 +24,22 @@
       }
     }
 
+    // The contents follow the reader: the heading nearest the top of the page is the current one.
+    const links = new Map([...document.querySelectorAll('.toc a[href^="#"]')].map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+    const headings = [...links.keys()].map((id) => document.getElementById(id)).filter(Boolean);
+    if (headings.length) {
+      let current;
+      const mark = () => {
+        const reading = headings.filter((h) => h.getBoundingClientRect().top < 120).at(-1) ?? headings[0];
+        if (reading === current) return;
+        current = reading;
+        for (const [id, link] of links) link.toggleAttribute('aria-current', id === reading.id);
+      };
+      mark();
+      addEventListener('scroll', mark, { passive: true });
+      addEventListener('resize', mark, { passive: true });
+    }
+
     for (const block of document.querySelectorAll('pre')) {
       const shell = document.createElement('div');
       shell.className = 'code-shell';

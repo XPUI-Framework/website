@@ -11,7 +11,6 @@ import SectionTitle from '../components/kit/SectionTitle.astro';
 import Tag from '../components/kit/Tag.astro';
 import Mark from '../components/Mark.astro';
 import Base from '../layouts/Base.astro';
-import { readBoards } from '../lib/boards.ts';
 import { DIVIDERS, type DividerName } from '../lib/dividers.ts';
 import { ICONS, type IconName } from '../lib/icons.ts';
 
@@ -19,7 +18,6 @@ const tones = ['paper', 'tint', 'ink'] as const;
 const swatches = ['ink', 'ink-soft', 'ink-faint', 'line', 'tint-strong', 'tint', 'paper'];
 const icons = Object.keys(ICONS) as IconName[];
 const dividers = Object.keys(DIVIDERS) as DividerName[];
-const boards = readBoards().filter((b) => b.bezel);
 ---
 
 <Base title="Kit · XPUI" description="The components this site is built from, in every tone." hidden>
@@ -66,10 +64,10 @@ const boards = readBoards().filter((b) => b.bezel);
   </Band>
 
   <Band tone="ink" labelledby="devices-title">
-    <SectionTitle eyebrow="From xpui-boards" title="Devices" id="devices-title">
-      <p>Each body drawn from the board's own bezel data, at half a CSS pixel per panel pixel.</p>
+    <SectionTitle eyebrow="Xteink's photograph, masked" title="The device" id="devices-title">
+      <p>A golden behind the frame's cut-out, at half a CSS pixel per panel pixel.</p>
     </SectionTitle>
-    <div class="devices">{boards.map((b) => <Device slug={b.slug}>{b.name}</Device>)}</div>
+    <div class="devices"><Device screen="gallery/tests/screenshots/menu_x3.png" alt="The gallery's menu on an Xteink X3">Xteink X3</Device></div>
   </Band>
 </Base>
 

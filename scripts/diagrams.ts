@@ -9,6 +9,20 @@ export function mermaidConfigText(): string {
   return readFileSync(CONFIG, 'utf8');
 }
 
+/** What every drawing depends on: the renderer's version, the configuration, and this file. */
+export function diagramsFingerprint(version: string): string {
+  return `${version}\n${mermaidConfigText()}\n${readFileSync(import.meta.filename, 'utf8')}`;
+}
+
+/**
+ * The framework is what everything rests on, so it belongs at the foot of the drawing. A
+ * dependency graph written `flowchart BT` lays the depended-upon crate at the top; read as `TD`
+ * it stands the right way up, with the same nodes and the same arrows.
+ */
+export function upright(definition: string): string {
+  return definition.replace(/^(\s*)flowchart\s+BT\b/, '$1flowchart TD');
+}
+
 /** Renders each definition to a two-tone SVG with one browser; a diagram with any third colour is an error. */
 export async function renderDiagrams(definitions: Map<string, string>): Promise<Map<string, string>> {
   const out = new Map<string, string>();
@@ -20,7 +34,7 @@ export async function renderDiagrams(definitions: Map<string, string>): Promise<
   const browser = await puppeteer.launch({ executablePath, headless: true });
   try {
     for (const [key, definition] of definitions) {
-      const { data } = await renderMermaid(browser, definition, 'svg', {
+      const { data } = await renderMermaid(browser, upright(definition), 'svg', {
         backgroundColor: 'transparent',
         mermaidConfig: JSON.parse(mermaidConfigText()),
         svgId: `d${key}`,

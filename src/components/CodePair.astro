@@ -3,17 +3,16 @@ import Device from './kit/Device.astro';
 
 interface Props {
   code: string;
-  board: string;
   golden: string;
   alt: string;
 }
 
-const { code, board, golden, alt } = Astro.props;
+const { code, golden, alt } = Astro.props;
 ---
 
 <div class="pair">
   <div class="code prose" set:html={code} />
-  <Device slug={board} screen={golden} alt={alt}><slot /></Device>
+  <Device screen={golden} alt={alt}><slot /></Device>
 </div>
 
 <style>

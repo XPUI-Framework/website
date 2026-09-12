@@ -52,7 +52,7 @@ const repoGroups = await Promise.all(
 
   <Band tone="tint" labelledby="code-title">
     <SectionTitle eyebrow={home.code.eyebrow} title={home.code.title} id="code-title" ornament />
-    <CodePair code={await render(`\`\`\`rust\n${item.code}\n\`\`\``)} board={home.code.board} golden={home.code.golden} alt={home.code.alt}>
+    <CodePair code={await render(`\`\`\`rust\n${item.code}\n\`\`\``)} golden={home.code.golden} alt={home.code.alt}>
       The gallery's <a href={source.edit}>Controls screen</a>, lines {item.first}–{item.last}, beside the golden
       its conformance tests compare against.
     </CodePair>

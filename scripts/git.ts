@@ -52,11 +52,6 @@ export function uncommitted(dir: string, paths: string[]): string[] {
     .map((line) => line.slice(3));
 }
 
-/** The tree at a commit as a tar stream: the files as committed, with no working tree involved. */
-export function archive(dir: string, sha: string): Buffer {
-  return git(dir, ['archive', '--format=tar', sha]);
-}
-
 /** The commit a ref names, or undefined when there is no such ref. */
 export function resolve(dir: string, ref: string): string | undefined {
   try {
