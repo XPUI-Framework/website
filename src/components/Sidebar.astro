@@ -1,0 +1,68 @@
+---
+import type { SidebarGroup } from '../lib/docs.ts';
+
+interface Props {
+  groups: SidebarGroup[];
+  current?: string;
+}
+
+const { groups, current } = Astro.props;
+---
+
+<nav class="sidebar" aria-label="Documentation">
+  {groups.map((group) => (
+    <section>
+      <h2>{group.label}</h2>
+      <ul>
+        {group.pages.map((page) => (
+          <li>
+            <a href={page.href} aria-current={page.id === current ? 'page' : undefined}>{page.label}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</nav>
+
+<style>
+  .sidebar { display: grid; gap: 1.5rem; font-size: 0.9375rem; }
+
+  h2 {
+    margin: 0 0 0.25rem;
+    color: var(--ink-soft);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  ul { margin: 0; padding: 0; list-style: none; }
+
+  a {
+    display: flex;
+    align-items: center;
+    min-height: var(--touch);
+    padding: 0 0.75rem;
+    border-radius: var(--radius-s);
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  a:hover { background: var(--tint); color: var(--ink); }
+
+  a[aria-current='page'] { color: var(--ink); font-weight: 600; }
+
+  a[aria-current='page']::before {
+    content: '';
+    flex: none;
+    width: 0.5rem;
+    height: 1.25rem;
+    margin: 0 0.5rem 0 -0.75rem;
+    background: var(--dither);
+    background-size: 2px 2px;
+  }
+
+  @media (min-width: 48rem) {
+    a { min-height: 2.25rem; }
+  }
+</style>

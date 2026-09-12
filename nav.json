@@ -1,0 +1,212 @@
+{
+  "groups": [
+    {
+      "label": "Start here",
+      "pages": [
+        {
+          "page": "xpui/README.md",
+          "label": "Overview"
+        },
+        "xpui/docs/orientation.md",
+        "xpui/docs/tutorial.md",
+        "xpui/docs/a-second-screen.md"
+      ]
+    },
+    {
+      "label": "The framework",
+      "pages": [
+        "xpui/docs/reference.md",
+        "xpui/docs/architecture.md",
+        "xpui/docs/design.md",
+        "xpui/docs/host.md",
+        "xpui/docs/writing-a-backend.md",
+        "xpui/docs/writing-a-widget.md",
+        "xpui/docs/testing.md"
+      ]
+    },
+    {
+      "label": "The components",
+      "pages": [
+        {
+          "page": "xpui-chrome/README.md",
+          "label": "Overview"
+        },
+        "xpui-chrome/docs/components.md",
+        "xpui-chrome/docs/design.md"
+      ]
+    },
+    {
+      "label": "The boards",
+      "pages": [
+        {
+          "page": "xpui-boards/README.md",
+          "label": "Overview"
+        },
+        "xpui-boards/docs/boards.md",
+        "xpui-boards/docs/adding-a-board.md",
+        "xpui-boards/docs/design.md",
+        {
+          "page": "xpui-boards/core/README.md",
+          "label": "xpui-boards-core"
+        },
+        {
+          "page": "xpui-boards/pimoroni/README.md",
+          "label": "xpui-boards-pimoroni"
+        },
+        {
+          "page": "xpui-boards/seeed/README.md",
+          "label": "xpui-boards-seeed"
+        },
+        {
+          "page": "xpui-boards/xteink/README.md",
+          "label": "xpui-boards-xteink"
+        }
+      ]
+    },
+    {
+      "label": "The backends",
+      "pages": [
+        {
+          "page": "xpui-backends/README.md",
+          "label": "Overview"
+        },
+        "xpui-backends/docs/choosing-a-backend.md",
+        {
+          "page": "xpui-backends/embedded_graphics/README.md",
+          "label": "xpui-embedded-graphics"
+        },
+        {
+          "page": "xpui-backends/embedded_graphics/docs/design.md",
+          "label": "Design decisions"
+        },
+        {
+          "page": "xpui-backends/embedded_graphics/docs/hardware.md",
+          "label": "Hardware notes"
+        },
+        {
+          "page": "xpui-backends/embedded_graphics/docs/screenshots.md",
+          "label": "Screenshot tests"
+        },
+        {
+          "page": "xpui-backends/fui/README.md",
+          "label": "xpui-fui"
+        },
+        {
+          "page": "xpui-backends/fui/cpp/README.md",
+          "label": "The FreeInkUI shim"
+        },
+        {
+          "page": "xpui-backends/fui/docs/design.md",
+          "label": "Why it has this shape"
+        },
+        {
+          "page": "xpui-backends/fui/docs/firmware.md",
+          "label": "Adding the shim"
+        },
+        {
+          "page": "xpui-backends/fui/docs/coverage.md",
+          "label": "FreeInkUI coverage"
+        },
+        {
+          "page": "xpui-backends/screenshot/README.md",
+          "label": "xpui-screenshot"
+        }
+      ]
+    },
+    {
+      "label": "The simulator",
+      "pages": [
+        {
+          "page": "xpui-simulator/README.md",
+          "label": "Overview"
+        },
+        "xpui-simulator/docs/running.md",
+        "xpui-simulator/docs/design.md"
+      ]
+    },
+    {
+      "label": "The gallery",
+      "pages": [
+        {
+          "page": "xpui-gallery/README.md",
+          "label": "Overview"
+        },
+        "xpui-gallery/docs/conformance.md",
+        "xpui-gallery/docs/design.md",
+        {
+          "page": "xpui-gallery/gallery/README.md",
+          "label": "The screens"
+        },
+        {
+          "page": "xpui-gallery/tutorial/README.md",
+          "label": "The tutorial crate"
+        }
+      ]
+    },
+    {
+      "label": "On hardware",
+      "pages": [
+        {
+          "page": "xpui-rp2040/README.md",
+          "label": "The RP2040 firmware"
+        },
+        {
+          "page": "xpui-rp2040/docs/tutorial.md",
+          "label": "Your first screen on a board"
+        },
+        {
+          "page": "xpui-rp2040/docs/hardware.md",
+          "label": "Working on the RP2040"
+        },
+        {
+          "page": "xpui-esp32/README.md",
+          "label": "The ESP32 firmware"
+        },
+        {
+          "page": "xpui-esp32/docs/tutorial.md",
+          "label": "Your first screen on an ESP32"
+        },
+        {
+          "page": "xpui-esp32/docs/hardware.md",
+          "label": "ESP32 hardware notes"
+        }
+      ]
+    },
+    {
+      "label": "In C++",
+      "pages": [
+        {
+          "page": "xpui-cpp/README.md",
+          "label": "Overview"
+        },
+        {
+          "page": "xpui-cpp/docs/tutorial.md",
+          "label": "Rust screens in a C++ firmware"
+        },
+        "xpui-cpp/docs/boundary.md",
+        {
+          "page": "xpui-cpp/abi/README.md",
+          "label": "xpui-cpp-abi"
+        },
+        {
+          "page": "xpui-cpp/cpp_host/README.md",
+          "label": "xpui-cpp-host"
+        },
+        {
+          "page": "xpui-cpp/firmware/README.md",
+          "label": "The PlatformIO firmware"
+        }
+      ]
+    },
+    {
+      "label": "Across the repositories",
+      "pages": [
+        {
+          "page": "xpui-dev/README.md",
+          "label": "The umbrella"
+        },
+        "xpui-dev/docs/working-across-repositories.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+/* Code: the one place with colour. Token colours come from Shiki's variables, switched in tokens.css. */
+
+pre {
+  margin-block: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border-radius: var(--radius-l);
+  background: var(--code-surface, var(--tint));
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  tab-size: 4;
+  scrollbar-width: thin;
+}
+
+pre.astro-code { background: var(--code-surface, var(--tint)); }
+
+/* Box-drawing art is a picture: its lines have to meet. */
+pre[data-language='text'] { line-height: 1.15; }
+
+:not(pre) > code {
+  padding: 0.12em 0.38em;
+  border-radius: 0.35em;
+  background: var(--tint-strong);
+  color: var(--code-ink);
+  font-size: 0.86em;
+  overflow-wrap: break-word;
+}
+
+a > code { color: inherit; }
+
+/* On a tinted band, code sits on paper instead, so it still reads as its own surface. */
+.tint { --code-surface: var(--paper); }
+
+/* The shell exists only when the script runs; without it the block is the plain <pre> above. */
+.code-shell { position: relative; }
+
+.copy {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  min-height: 2rem;
+  padding: 0 0.75rem;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--tint-strong);
+  color: var(--ink-soft);
+  font: 500 0.75rem var(--font-mono);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.copy:hover { background: var(--ink); color: var(--paper); }

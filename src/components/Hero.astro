@@ -1,0 +1,59 @@
+---
+import Button from './kit/Button.astro';
+import Device from './kit/Device.astro';
+import Mark from './Mark.astro';
+
+interface Props {
+  headline: string;
+  lede: string;
+  board: string;
+  screen: string;
+  alt: string;
+}
+
+const { headline, lede, board, screen, alt } = Astro.props;
+---
+
+<section class="hero page" aria-labelledby="hero-title">
+  <div class="words">
+    <Mark size={96} />
+    <h1 id="hero-title">{headline}</h1>
+    <p class="lede" set:html={lede} />
+    <p class="actions">
+      <Button href="/docs/xpui/tutorial/" icon="arrow">Get started</Button>
+      <Button href="/docs/" variant="soft">Documentation</Button>
+    </p>
+  </div>
+  <div class="picture">
+    <Device slug={board} screen={screen} alt={alt} />
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    gap: clamp(3rem, 8vw, 5rem);
+    align-items: center;
+    padding-block: clamp(3rem, 9vw, 6.5rem) clamp(4rem, 9vw, 6rem);
+  }
+
+  @media (min-width: 60rem) {
+    .hero { grid-template-columns: minmax(0, 1fr) auto; }
+  }
+
+  .words { display: grid; gap: 1.5rem; justify-items: start; max-width: 36rem; }
+
+  h1 {
+    margin: 0.5rem 0 0;
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .lede { margin: 0; color: var(--ink-soft); font-size: clamp(1.0625rem, 2.2vw, 1.25rem); line-height: 1.55; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0.5rem 0 0; }
+
+  .picture { display: flex; justify-content: center; }
+</style>

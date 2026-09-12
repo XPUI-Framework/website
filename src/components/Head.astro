@@ -1,0 +1,52 @@
+---
+import { createHash } from 'node:crypto';
+import script from '../client/site.js?raw';
+
+interface Props {
+  title: string;
+  description: string;
+  /** For pages that exist to maintain the site, not to be found. */
+  hidden?: boolean;
+}
+
+const { title, description, hidden = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const image = new URL('/social.png', Astro.site);
+const scriptHash = createHash('sha256').update(script).digest('base64');
+// Production only: in dev, Vite serves styles and reloads through scripts this policy would refuse.
+const policy = [
+  "default-src 'self'",
+  `script-src 'sha256-${scriptHash}'`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data:",
+  "font-src 'self'",
+  "base-uri 'none'",
+  "form-action 'none'",
+  "object-src 'none'",
+].join('; ');
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{import.meta.env.PROD && <meta http-equiv="content-security-policy" content={policy} />}
+<title>{title}</title>
+<meta name="description" content={description} />
+{hidden && <meta name="robots" content="noindex" />}
+<link rel="canonical" href={canonical} />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preload" href="/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="XPUI" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="640" />
+<meta property="og:image:alt" content="The XPUI mark: XP over UI in a square, drawn in pixels" />
+<meta name="twitter:card" content="summary_large_image" />
+<script is:inline set:html={script} />

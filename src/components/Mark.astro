@@ -1,0 +1,15 @@
+---
+import { syncedText } from '../lib/content.ts';
+
+interface Props {
+  size?: number;
+}
+
+const { size = 32 } = Astro.props;
+// currentColor makes the square the text colour; the letters are holes, so they show the ground.
+const svg = syncedText('brand', 'assets/mark.svg')
+  .replace(/ fill="[^"]*"/, ' fill="currentColor"')
+  .replace('<svg ', `<svg width="${size}" height="${size}" role="img" aria-label="XPUI" `);
+---
+
+<Fragment set:html={svg} />

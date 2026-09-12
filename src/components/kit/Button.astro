@@ -1,0 +1,39 @@
+---
+import type { IconName } from '../../lib/icons.ts';
+import Icon from './Icon.astro';
+
+interface Props {
+  href: string;
+  variant?: 'solid' | 'soft';
+  icon?: IconName;
+}
+
+const { href, variant = 'solid', icon } = Astro.props;
+---
+
+<a class:list={['button', variant]} href={href}>
+  <slot />
+  {icon && <Icon name={icon} />}
+</a>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-height: var(--touch);
+    padding: 0 1.25rem;
+    border-radius: var(--radius-full);
+    font: 500 0.875rem var(--font-mono);
+    text-decoration: none;
+    transition: background-color 150ms ease, transform 150ms ease;
+  }
+
+  .solid { background: var(--ink); color: var(--paper); }
+  .solid:hover { background: var(--ink-soft); }
+
+  .soft { background: var(--tint-strong); color: var(--ink); }
+  .soft:hover { background: var(--line); }
+
+  .button:active { transform: translateY(1px); }
+</style>

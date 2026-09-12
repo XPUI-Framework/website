@@ -1,0 +1,552 @@
+[
+  {
+    "slug": "x3",
+    "name": "Xteink X3",
+    "width": 528,
+    "height": 792,
+    "bezel": {
+      "body": [
+        620,
+        1010
+      ],
+      "panelOrigin": [
+        75,
+        80
+      ],
+      "panelSize": [
+        470,
+        705
+      ],
+      "buttons": [
+        {
+          "label": "Back",
+          "centre": [
+            77,
+            898
+          ],
+          "size": [
+            125,
+            60
+          ]
+        },
+        {
+          "label": "Select",
+          "centre": [
+            232,
+            898
+          ],
+          "size": [
+            125,
+            60
+          ]
+        },
+        {
+          "label": "Up",
+          "centre": [
+            387,
+            898
+          ],
+          "size": [
+            125,
+            60
+          ]
+        },
+        {
+          "label": "Down",
+          "centre": [
+            542,
+            898
+          ],
+          "size": [
+            125,
+            60
+          ]
+        },
+        {
+          "label": "Prev",
+          "centre": [
+            38,
+            433
+          ],
+          "size": [
+            50,
+            170
+          ]
+        },
+        {
+          "label": "Sleep",
+          "centre": [
+            582,
+            323
+          ],
+          "size": [
+            50,
+            110
+          ]
+        },
+        {
+          "label": "Next",
+          "centre": [
+            582,
+            513
+          ],
+          "size": [
+            50,
+            170
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "x4",
+    "name": "Xteink X4",
+    "width": 480,
+    "height": 800,
+    "bezel": {
+      "body": [
+        580,
+        1020
+      ],
+      "panelOrigin": [
+        55,
+        80
+      ],
+      "panelSize": [
+        420,
+        700
+      ],
+      "buttons": [
+        {
+          "label": "Back",
+          "centre": [
+            72,
+            900
+          ],
+          "size": [
+            115,
+            60
+          ]
+        },
+        {
+          "label": "Select",
+          "centre": [
+            217,
+            900
+          ],
+          "size": [
+            115,
+            60
+          ]
+        },
+        {
+          "label": "Up",
+          "centre": [
+            362,
+            900
+          ],
+          "size": [
+            115,
+            60
+          ]
+        },
+        {
+          "label": "Down",
+          "centre": [
+            507,
+            900
+          ],
+          "size": [
+            115,
+            60
+          ]
+        },
+        {
+          "label": "Sleep",
+          "centre": [
+            527,
+            240
+          ],
+          "size": [
+            50,
+            110
+          ]
+        },
+        {
+          "label": "Prev",
+          "centre": [
+            527,
+            415
+          ],
+          "size": [
+            50,
+            140
+          ]
+        },
+        {
+          "label": "Next",
+          "centre": [
+            527,
+            605
+          ],
+          "size": [
+            50,
+            140
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "x4pro",
+    "name": "Xteink X4 Pro",
+    "width": 480,
+    "height": 800,
+    "bezel": {
+      "body": [
+        580,
+        1020
+      ],
+      "panelOrigin": [
+        80,
+        80
+      ],
+      "panelSize": [
+        420,
+        700
+      ],
+      "buttons": [
+        {
+          "label": "Prev",
+          "centre": [
+            40,
+            430
+          ],
+          "size": [
+            44,
+            160
+          ]
+        },
+        {
+          "label": "Sleep",
+          "centre": [
+            540,
+            328
+          ],
+          "size": [
+            44,
+            110
+          ]
+        },
+        {
+          "label": "Next",
+          "centre": [
+            540,
+            507
+          ],
+          "size": [
+            44,
+            160
+          ]
+        },
+        {
+          "label": "Home",
+          "centre": [
+            290,
+            900
+          ],
+          "size": [
+            100,
+            100
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "sticky",
+    "name": "Seeed Sticky",
+    "width": 480,
+    "height": 800,
+    "bezel": {
+      "body": [
+        560,
+        1010
+      ],
+      "panelOrigin": [
+        33,
+        95
+      ],
+      "panelSize": [
+        450,
+        750
+      ],
+      "buttons": [
+        {
+          "label": "OK",
+          "centre": [
+            521,
+            286
+          ],
+          "size": [
+            44,
+            120
+          ]
+        },
+        {
+          "label": "Prev",
+          "centre": [
+            521,
+            460
+          ],
+          "size": [
+            44,
+            140
+          ]
+        },
+        {
+          "label": "Next",
+          "centre": [
+            521,
+            644
+          ],
+          "size": [
+            44,
+            140
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "badger2040",
+    "name": "Badger 2040",
+    "width": 296,
+    "height": 128,
+    "bezel": {
+      "body": [
+        856,
+        487
+      ],
+      "panelOrigin": [
+        64,
+        60
+      ],
+      "panelSize": [
+        669,
+        291
+      ],
+      "buttons": [
+        {
+          "label": "a",
+          "centre": [
+            142,
+            419
+          ],
+          "size": [
+            110,
+            60
+          ]
+        },
+        {
+          "label": "b",
+          "centre": [
+            428,
+            419
+          ],
+          "size": [
+            110,
+            60
+          ]
+        },
+        {
+          "label": "c",
+          "centre": [
+            713,
+            419
+          ],
+          "size": [
+            110,
+            60
+          ]
+        },
+        {
+          "label": "Up",
+          "centre": [
+            794,
+            146
+          ],
+          "size": [
+            60,
+            60
+          ]
+        },
+        {
+          "label": "Dn",
+          "centre": [
+            794,
+            266
+          ],
+          "size": [
+            60,
+            60
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "tufty2040",
+    "name": "Tufty 2040",
+    "width": 320,
+    "height": 240,
+    "bezel": {
+      "body": [
+        652,
+        527
+      ],
+      "panelOrigin": [
+        54,
+        60
+      ],
+      "panelSize": [
+        489,
+        367
+      ],
+      "buttons": [
+        {
+          "label": "a",
+          "centre": [
+            108,
+            477
+          ],
+          "size": [
+            95,
+            55
+          ]
+        },
+        {
+          "label": "b",
+          "centre": [
+            326,
+            477
+          ],
+          "size": [
+            95,
+            55
+          ]
+        },
+        {
+          "label": "c",
+          "centre": [
+            543,
+            477
+          ],
+          "size": [
+            95,
+            55
+          ]
+        },
+        {
+          "label": "Up",
+          "centre": [
+            597,
+            188
+          ],
+          "size": [
+            55,
+            55
+          ]
+        },
+        {
+          "label": "Dn",
+          "centre": [
+            597,
+            298
+          ],
+          "size": [
+            55,
+            55
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "inkyframe",
+    "name": "Inky Frame 5.7\"",
+    "width": 600,
+    "height": 448,
+    "bezel": {
+      "body": [
+        1314,
+        1275
+      ],
+      "panelOrigin": [
+        83,
+        83
+      ],
+      "panelSize": [
+        1149,
+        858
+      ],
+      "buttons": [
+        {
+          "label": "A",
+          "centre": [
+            131,
+            1108
+          ],
+          "size": [
+            60,
+            60
+          ]
+        },
+        {
+          "label": "B",
+          "centre": [
+            394,
+            1108
+          ],
+          "size": [
+            60,
+            60
+          ]
+        },
+        {
+          "label": "C",
+          "centre": [
+            657,
+            1108
+          ],
+          "size": [
+            60,
+            60
+          ]
+        },
+        {
+          "label": "D",
+          "centre": [
+            919,
+            1108
+          ],
+          "size": [
+            60,
+            60
+          ]
+        },
+        {
+          "label": "E",
+          "centre": [
+            1182,
+            1108
+          ],
+          "size": [
+            60,
+            60
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,38 @@
+---
+import Footer from '../components/Footer.astro';
+import Head from '../components/Head.astro';
+import TopBar from '../components/TopBar.astro';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/callout.css';
+import '../styles/code.css';
+import '../styles/divider.css';
+import '../styles/prose.css';
+
+interface Props {
+  title: string;
+  description: string;
+  hidden?: boolean;
+}
+
+const { title, description, hidden } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={title} description={description} hidden={hidden} />
+  </head>
+  <body>
+    <a class="skip" href="#site-main">Skip to content</a>
+    {Astro.slots.has('menu') ? (
+      <TopBar><Fragment slot="menu"><slot name="menu" /></Fragment></TopBar>
+    ) : (
+      <TopBar />
+    )}
+    <main id="site-main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,91 @@
+{
+  "home": {
+    "hero": {
+      "headline": "Declarative UI for e-ink, in Rust.",
+      "lede": "Small, `no_std`, dependency-free. You write the screen; the framework handles layout, focus, input and the redraw.",
+      "board": "x3",
+      "screen": "gallery/tests/screenshots/menu_x3.png",
+      "alt": "The gallery's menu on an Xteink X3"
+    },
+    "code": {
+      "eyebrow": "A screen",
+      "title": "Describe it. xpui draws it.",
+      "file": "gallery/src/screens.rs",
+      "within": "impl Screen for Controls",
+      "item": "fn body(&self)",
+      "board": "x3",
+      "golden": "gallery/tests/screenshots/controls_x3.png",
+      "alt": "The controls screen: brightness and warmth steppers, and a frontlight toggle"
+    },
+    "paths": {
+      "eyebrow": "Documentation",
+      "title": "Start where you are.",
+      "cards": [
+        {
+          "title": "Learn",
+          "pages": [
+            "xpui/docs/tutorial.md",
+            "xpui/docs/a-second-screen.md",
+            "xpui/docs/orientation.md"
+          ]
+        },
+        {
+          "title": "Look up",
+          "pages": [
+            "xpui/docs/reference.md",
+            "xpui/docs/architecture.md",
+            "xpui/docs/host.md"
+          ]
+        },
+        {
+          "title": "Extend",
+          "pages": [
+            "xpui/docs/writing-a-backend.md",
+            "xpui/docs/writing-a-widget.md",
+            "xpui/docs/testing.md"
+          ]
+        }
+      ]
+    },
+    "repositories": {
+      "eyebrow": "Repositories",
+      "title": "Every arrow points inward.",
+      "groups": [
+        {
+          "title": "The framework",
+          "repos": [
+            "xpui"
+          ]
+        },
+        {
+          "title": "Building blocks",
+          "repos": [
+            "xpui-chrome",
+            "xpui-boards",
+            "xpui-backends"
+          ]
+        },
+        {
+          "title": "Tools",
+          "repos": [
+            "xpui-simulator",
+            "xpui-gallery",
+            "xpui-dev"
+          ]
+        },
+        {
+          "title": "On a device",
+          "repos": [
+            "xpui-rp2040",
+            "xpui-esp32",
+            "xpui-cpp"
+          ]
+        }
+      ]
+    }
+  },
+  "docs": {
+    "title": "Documentation",
+    "lede": "Every page here is a repository's own, rendered as one site. Start with the tutorial; reach for the reference when you know the shape."
+  }
+}

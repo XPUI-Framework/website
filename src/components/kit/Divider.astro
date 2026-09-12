@@ -1,0 +1,20 @@
+---
+import '../../styles/divider.css';
+import { DEFAULT_DIVIDER, DIVIDERS, type DividerName } from '../../lib/dividers.ts';
+import { runs } from '../../lib/icons.ts';
+
+interface Props {
+  variant?: DividerName;
+  flanked?: boolean;
+}
+
+const { variant = DEFAULT_DIVIDER, flanked = false } = Astro.props;
+const grid = DIVIDERS[variant]();
+const [width, height] = [grid[0].length, grid.length];
+---
+
+<div class:list={['divider', { flanked }]} role="separator">
+  <svg viewBox={`0 0 ${width} ${height}`} width={width * 2} height={height * 2} fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+    {runs(grid).map(([x, y, w]) => <rect x={x} y={y} width={w} height="1" />)}
+  </svg>
+</div>

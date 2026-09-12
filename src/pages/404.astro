@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Not found · XPUI" description="There is no page at this address.">
+  <section class="page missing">
+    <h1>Not found</h1>
+    <p>There is no page at this address. <a href="/">Back to the start.</a></p>
+  </section>
+</Base>
+
+<style>
+  .missing { padding-block: 4rem; max-width: var(--measure); }
+</style>

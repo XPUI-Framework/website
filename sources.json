@@ -1,0 +1,126 @@
+{
+  "root": "..",
+  "org": "XPUI-Framework",
+  "repos": [
+    {
+      "dir": ".github",
+      "github": ".github",
+      "pages": false,
+      "files": [
+        "profile/README.md"
+      ]
+    },
+    {
+      "dir": "brand",
+      "github": "brand",
+      "pages": false,
+      "files": [
+        "assets/mark.svg",
+        "assets/favicon.svg",
+        "assets/favicon.ico",
+        "assets/apple-touch-icon.png",
+        "assets/social-1280x640.png"
+      ]
+    },
+    {
+      "dir": "xpui",
+      "github": "xpui-framework",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md"
+      ]
+    },
+    {
+      "dir": "xpui-chrome",
+      "github": "xpui-chrome",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md"
+      ]
+    },
+    {
+      "dir": "xpui-boards",
+      "github": "xpui-boards",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md",
+        "*/README.md"
+      ]
+    },
+    {
+      "dir": "xpui-backends",
+      "github": "xpui-backends",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md",
+        "*/README.md",
+        "*/docs/*.md",
+        "fui/cpp/README.md",
+        "!abi-check/README.md"
+      ]
+    },
+    {
+      "dir": "xpui-simulator",
+      "github": "xpui-simulator",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md"
+      ]
+    },
+    {
+      "dir": "xpui-gallery",
+      "github": "xpui-gallery",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md",
+        "*/README.md",
+        "gallery/src/screens.rs",
+        "gallery/tests/screenshots/menu_x3.png",
+        "gallery/tests/screenshots/controls_x3.png"
+      ]
+    },
+    {
+      "dir": "xpui-rp2040",
+      "github": "xpui-rp2040",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md"
+      ]
+    },
+    {
+      "dir": "xpui-esp32",
+      "github": "xpui-esp32",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md"
+      ]
+    },
+    {
+      "dir": "xpui-cpp",
+      "github": "xpui-cpp",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md",
+        "*/README.md"
+      ]
+    },
+    {
+      "dir": "xpui-dev",
+      "github": "xpui-dev",
+      "files": [
+        "README.md",
+        "docs/*.md",
+        "!docs/contributing.md"
+      ]
+    }
+  ]
+}

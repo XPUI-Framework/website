@@ -1,0 +1,40 @@
+{
+  "theme": "base",
+  "fontFamily": "Geist Mono, ui-monospace, monospace",
+  "htmlLabels": false,
+  "flowchart": {
+    "htmlLabels": false
+  },
+  "themeVariables": {
+    "fontFamily": "Geist Mono, ui-monospace, monospace",
+    "fontSize": "14px",
+    "darkMode": false,
+    "background": "#f0f1f2",
+    "primaryColor": "#f0f1f2",
+    "primaryTextColor": "#0a0b0c",
+    "primaryBorderColor": "#0a0b0c",
+    "secondaryColor": "#f0f1f2",
+    "secondaryTextColor": "#0a0b0c",
+    "secondaryBorderColor": "#0a0b0c",
+    "tertiaryColor": "#f0f1f2",
+    "tertiaryTextColor": "#0a0b0c",
+    "tertiaryBorderColor": "#0a0b0c",
+    "mainBkg": "#f0f1f2",
+    "nodeBorder": "#0a0b0c",
+    "nodeTextColor": "#0a0b0c",
+    "textColor": "#0a0b0c",
+    "titleColor": "#0a0b0c",
+    "lineColor": "#0a0b0c",
+    "arrowheadColor": "#0a0b0c",
+    "clusterBkg": "#f0f1f2",
+    "clusterBorder": "#0a0b0c",
+    "edgeLabelBackground": "#f0f1f2",
+    "labelBackground": "#f0f1f2",
+    "defaultLinkColor": "#0a0b0c"
+  },
+  "layout": "elk",
+  "elk": {
+    "mergeEdges": true,
+    "nodePlacementStrategy": "BRANDES_KOEPF"
+  }
+}

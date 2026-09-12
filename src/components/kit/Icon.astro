@@ -1,0 +1,29 @@
+---
+import { ICONS, type IconName, runs } from '../../lib/icons.ts';
+
+interface Props {
+  name: IconName;
+  size?: number;
+  label?: string;
+}
+
+const { name, size = 15, label } = Astro.props;
+---
+
+<svg
+  class="icon"
+  viewBox="0 0 15 15"
+  width={size}
+  height={size}
+  fill="currentColor"
+  shape-rendering="crispEdges"
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  {runs(ICONS[name]).map(([x, y, w]) => <rect x={x} y={y} width={w} height="1" />)}
+</svg>
+
+<style>
+  .icon { display: inline-block; flex: none; vertical-align: middle; }
+</style>

@@ -1,0 +1,14 @@
+---
+import '../styles/callout.css';
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<aside class="callout" aria-label={label}>
+  <p class="label">{label}</p>
+  <slot />
+</aside>

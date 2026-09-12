@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import CodePair from '../components/CodePair.astro';
+import DocPaths from '../components/DocPaths.astro';
+import Hero from '../components/Hero.astro';
+import Band from '../components/kit/Band.astro';
+import SectionTitle from '../components/kit/SectionTitle.astro';
+import RepoCards from '../components/RepoCards.astro';
+import Base from '../layouts/Base.astro';
+import { sourceOf, syncedText } from '../lib/content.ts';
+import { siteNav } from '../lib/docs.ts';
+import { rustItemWithin } from '../lib/extract.ts';
+import { readSite } from '../lib/site.ts';
+import { readManifest } from '../lib/manifest.ts';
+import { render } from '../lib/render.ts';
+import { repositoryRows } from '../lib/repos.ts';
+import { routeOf } from '../lib/routes.ts';
+import { firstSentence, section } from '../lib/sections.ts';
+
+const home = readSite().home;
+const gallery = 'xpui-gallery';
+
+const item = rustItemWithin(syncedText(gallery, home.code.file), home.code.within, home.code.item);
+const source = sourceOf(gallery, home.code.file);
+
+const entries = await getCollection('docs');
+const bodies = new Map(entries.map((e) => [e.id, e.body ?? '']));
+const { order } = siteNav(bodies);
+const page = (id: string) => {
+  const found = order.find((p) => p.id === id);
+  if (!found) throw new Error(`site.json names ${id}, which is not in the nav`);
+  return { href: routeOf(id), label: found.label, summary: firstSentence(bodies.get(id) ?? '') };
+};
+
+const profile = { dir: '.github', path: 'profile/README.md' };
+const rows = repositoryRows(section(syncedText(profile.dir, profile.path), 'The repositories'));
+const dirOf = new Map(Object.entries(readManifest().repos).map(([dir, repo]) => [repo.github, dir]));
+const repo = async (dir: string) => {
+  const github = readManifest().repos[dir]?.github;
+  const row = rows.find((r) => r.github === github);
+  if (!github || !row) throw new Error(`site.json names ${dir}, which the profile's table does not`);
+  const html = await render(row.description, profile);
+  return { github, docs: `/docs/${dirOf.get(github)}/`, description: html.replace(/^<p>|<\/p>\s*$/g, '') };
+};
+const repoGroups = await Promise.all(
+  home.repositories.groups.map(async (g) => ({ title: g.title, repos: await Promise.all(g.repos.map(repo)) })),
+);
+---
+
+<Base title={`XPUI · ${home.hero.headline}`} description={home.hero.lede}>
+  <Hero {...home.hero} lede={await render(home.hero.lede)} />
+
+  <Band tone="tint" labelledby="code-title">
+    <SectionTitle eyebrow={home.code.eyebrow} title={home.code.title} id="code-title" ornament />
+    <CodePair code={await render(`\`\`\`rust\n${item.code}\n\`\`\``)} board={home.code.board} golden={home.code.golden} alt={home.code.alt}>
+      The gallery's <a href={source.edit}>Controls screen</a>, lines {item.first}–{item.last}, beside the golden
+      its conformance tests compare against.
+    </CodePair>
+  </Band>
+
+  <Band labelledby="paths-title">
+    <SectionTitle eyebrow={home.paths.eyebrow} title={home.paths.title} id="paths-title" ornament />
+    <DocPaths cards={home.paths.cards.map((c) => ({ title: c.title, pages: c.pages.map(page) }))} />
+  </Band>
+
+  <Band tone="tint" labelledby="repos-title">
+    <SectionTitle eyebrow={home.repositories.eyebrow} title={home.repositories.title} id="repos-title" ornament />
+    <RepoCards groups={repoGroups} />
+  </Band>
+</Base>

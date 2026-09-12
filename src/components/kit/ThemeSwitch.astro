@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+
+const choices = [
+  { theme: 'light', icon: 'sun', label: 'Light' },
+  { theme: 'system', icon: 'monitor', label: 'Match the system' },
+  { theme: 'dark', icon: 'moon', label: 'Dark' },
+] as const;
+---
+
+<div id="site-theme" class="theme-switch" role="group" aria-label="Colour theme" hidden>
+  {choices.map(({ theme, icon, label }) => (
+    <button type="button" data-theme-choice={theme} aria-pressed="false" aria-label={label} title={label}>
+      <Icon name={icon} />
+    </button>
+  ))}
+</div>
+
+<style>
+  .theme-switch {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border-radius: var(--radius-full);
+    background: var(--tint-strong);
+  }
+
+  .theme-switch[hidden] { display: none; }
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 2.375rem;
+    height: 2.375rem;
+    border: 0;
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--ink-faint);
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  button:hover { color: var(--ink); }
+
+  button[aria-pressed='true'] {
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 0 0 1px var(--line);
+  }
+</style>

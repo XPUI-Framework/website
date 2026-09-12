@@ -1,0 +1,35 @@
+---
+interface Props {
+  href?: string;
+}
+
+const { href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class:list={['card', { link: href }]} href={href}>
+  <slot />
+</Tag>
+
+<style>
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 1.375rem;
+    border-radius: var(--radius-l);
+    background: var(--paper);
+    box-shadow: inset 0 0 0 1px var(--line);
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 150ms ease, transform 150ms ease;
+  }
+
+  .link:hover, .card:has(.stretched:hover) { box-shadow: inset 0 0 0 1px var(--ink-faint); transform: translateY(-1px); }
+
+  /* A link that covers its card, so the whole card answers the pointer. */
+  .card :global(.stretched)::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+
+  .card:has(.stretched:hover) :global(.icon) { color: var(--ink); transform: translateX(2px); }
+</style>

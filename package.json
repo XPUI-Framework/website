@@ -1,0 +1,31 @@
+{
+  "name": "xpui-website",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "astro dev --force",
+    "build": "astro build --force",
+    "preview": "astro preview",
+    "sync": "node scripts/sync.ts",
+    "test": "node --test",
+    "status": "node scripts/status.ts"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.1",
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "7.3.2",
+    "unist-util-visit": "5.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@mermaid-js/mermaid-cli": "11.17.0",
+    "@types/hast": "3.0.5",
+    "@types/mdast": "4.0.4",
+    "@types/node": "24.13.4",
+    "puppeteer": "25.10.0",
+    "typescript": "6.0.3"
+  }
+}

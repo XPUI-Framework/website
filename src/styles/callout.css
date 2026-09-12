@@ -1,0 +1,31 @@
+/* Shared by Callout.astro and GitHub's `> [!WARNING]` in synced markdown. */
+
+.callout {
+  margin-block: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-m);
+  background: var(--tint);
+  box-shadow: inset 3px 0 0 var(--ink-faint);
+}
+
+.callout .label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.35rem;
+  color: var(--ink-soft);
+  font: 600 0.6875rem var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.callout .label::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  background: var(--dither);
+  background-size: 2px 2px;
+}
+
+.callout > :last-child { margin-bottom: 0; }

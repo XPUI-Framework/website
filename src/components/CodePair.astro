@@ -1,0 +1,31 @@
+---
+import Device from './kit/Device.astro';
+
+interface Props {
+  code: string;
+  board: string;
+  golden: string;
+  alt: string;
+}
+
+const { code, board, golden, alt } = Astro.props;
+---
+
+<div class="pair">
+  <div class="code prose" set:html={code} />
+  <Device slug={board} screen={golden} alt={alt}><slot /></Device>
+</div>
+
+<style>
+  .pair { display: grid; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; justify-items: center; }
+
+  @media (min-width: 64rem) {
+    .pair { grid-template-columns: minmax(0, 1fr) auto; justify-items: stretch; }
+  }
+
+  .code { width: 100%; min-width: 0; }
+
+  .code :global(pre) { margin: 0; }
+
+  .pair :global(figcaption) { max-width: 20rem; margin-inline: auto; text-align: center; }
+</style>

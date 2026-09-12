@@ -1,0 +1,103 @@
+---
+import { board, deviceLayout } from '../../lib/boards.ts';
+import { galleryImage } from '../../images.ts';
+
+interface Props {
+  slug: string;
+  /** A golden from xpui-gallery; without one the panel is blank paper. */
+  screen?: string;
+  alt?: string;
+  lazy?: boolean;
+}
+
+/** Half a CSS pixel per panel pixel: one device pixel each on a 2× screen, smoothed on a 1× one. */
+const SCALE = 0.5;
+/** Proportions in tenths of a millimetre: the shell's corners and a key's, as the simulator draws them, and a thin recess around the panel. */
+const SHELL_RADIUS = 34;
+const KEY_RADIUS = 12;
+const WELL_LIP = 5;
+const HAIRLINE = 2;
+
+const { slug, screen, alt, lazy = false } = Astro.props;
+const device = board(slug);
+const bezel = device.bezel!;
+const layout = deviceLayout(device, SCALE);
+const [bodyW, bodyH] = bezel.body;
+const [px, py] = bezel.panelOrigin;
+const [pw, ph] = bezel.panelSize;
+const percent = (n: number) => `${(n * 100).toFixed(4)}%`;
+---
+
+<figure class="device" style={`width:${layout.width}px;aspect-ratio:${bodyW}/${bodyH}`}>
+  <svg viewBox={`0 0 ${bodyW} ${bodyH}`} aria-hidden="true">
+    <rect class="shell" width={bodyW} height={bodyH} rx={SHELL_RADIUS} />
+    <rect
+      class="edge"
+      x={HAIRLINE / 2}
+      y={HAIRLINE / 2}
+      width={bodyW - HAIRLINE}
+      height={bodyH - HAIRLINE}
+      rx={SHELL_RADIUS - HAIRLINE / 2}
+      stroke-width={HAIRLINE}
+    />
+    <rect class="well" x={px - WELL_LIP} y={py - WELL_LIP} width={pw + WELL_LIP * 2} height={ph + WELL_LIP * 2} rx={WELL_LIP * 2} />
+    {bezel.buttons.map(({ centre: [cx, cy], size: [w, h] }) => (
+      <rect
+        class="key"
+        x={cx - w / 2}
+        y={cy - h / 2}
+        width={w}
+        height={h}
+        rx={w === h ? w / 2 : KEY_RADIUS}
+        stroke-width={HAIRLINE}
+      />
+    ))}
+  </svg>
+  <span
+    class="screen"
+    style={`left:${percent(layout.panel.left)};top:${percent(layout.panel.top)};width:${percent(layout.panel.width)};height:${percent(layout.panel.height)}`}
+  >
+    {screen && <img src={galleryImage(screen)} width={device.width} height={device.height} alt={alt ?? ''} loading={lazy ? 'lazy' : undefined} decoding="async" />}
+  </span>
+  {Astro.slots.has('default') && <figcaption><slot /></figcaption>}
+</figure>
+
+<style>
+  .device { position: relative; flex: none; margin: 0; max-width: 100%; }
+
+  svg { display: block; width: 100%; height: auto; }
+
+  .shell { fill: var(--device-body); }
+  .edge { fill: none; stroke: var(--device-edge); }
+  .well { fill: var(--device-well); }
+  .key { fill: var(--device-key); stroke: var(--device-edge); }
+
+  /* The golden, as the panel shows it: ink on paper in both themes, the room's light notwithstanding. */
+  .screen { position: absolute; isolation: isolate; background: var(--panel-paper); overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+
+  img { display: block; width: 100%; height: 100%; }
+
+  @media (resolution: 2dppx) {
+    img { image-rendering: pixelated; }
+  }
+
+  @supports (mix-blend-mode: multiply) {
+    img { mix-blend-mode: multiply; }
+
+    .screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--panel-ink);
+      mix-blend-mode: lighten;
+      pointer-events: none;
+    }
+  }
+
+  figcaption {
+    margin-top: 1rem;
+    color: var(--ink-soft);
+    font: 0.8125rem var(--font-mono);
+    text-align: center;
+  }
+</style>

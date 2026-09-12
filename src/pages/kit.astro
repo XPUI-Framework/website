@@ -1,0 +1,106 @@
+---
+import Callout from '../components/Callout.astro';
+import Band from '../components/kit/Band.astro';
+import Button from '../components/kit/Button.astro';
+import Card from '../components/kit/Card.astro';
+import Device from '../components/kit/Device.astro';
+import Divider from '../components/kit/Divider.astro';
+import Eyebrow from '../components/kit/Eyebrow.astro';
+import Icon from '../components/kit/Icon.astro';
+import SectionTitle from '../components/kit/SectionTitle.astro';
+import Tag from '../components/kit/Tag.astro';
+import Mark from '../components/Mark.astro';
+import Base from '../layouts/Base.astro';
+import { readBoards } from '../lib/boards.ts';
+import { DIVIDERS, type DividerName } from '../lib/dividers.ts';
+import { ICONS, type IconName } from '../lib/icons.ts';
+
+const tones = ['paper', 'tint', 'ink'] as const;
+const swatches = ['ink', 'ink-soft', 'ink-faint', 'line', 'tint-strong', 'tint', 'paper'];
+const icons = Object.keys(ICONS) as IconName[];
+const dividers = Object.keys(DIVIDERS) as DividerName[];
+const boards = readBoards().filter((b) => b.bezel);
+---
+
+<Base title="Kit · XPUI" description="The components this site is built from, in every tone." hidden>
+  <Band labelledby="kit-title">
+    <SectionTitle eyebrow="Maintaining the site" title="The kit" id="kit-title">
+      <p>Every component the site is built from, on each of its three grounds. Unlisted; not in the sitemap.</p>
+    </SectionTitle>
+  </Band>
+
+  {tones.map((tone) => (
+    <Band tone={tone} labelledby={`tone-${tone}`}>
+      <SectionTitle eyebrow="Ground" title={tone} id={`tone-${tone}`} />
+      <div class="specimens">
+        <div class="swatches">
+          {swatches.map((s) => <span class="swatch" style={`background:var(--${s})`}><code>--{s}</code></span>)}
+        </div>
+        <div class="row">
+          <Mark size={64} />
+          <Button href="#kit-title" icon="arrow">Primary</Button>
+          <Button href="#kit-title" variant="soft">Secondary</Button>
+          <Tag>Tag</Tag>
+          <Eyebrow>Eyebrow</Eyebrow>
+        </div>
+        <div class="row icons">{icons.map((name) => <span class="icon-cell"><Icon name={name} size={30} /><code>{name}</code></span>)}</div>
+        <div class="cards">
+          <Card><strong>Card</strong><span>A surface with a hairline, for grouping.</span></Card>
+          <Card href="#kit-title"><strong>Link card</strong><span>Lifts a pixel on hover.</span></Card>
+        </div>
+        <p>Prose with <code>inline_code()</code> and <a href="#kit-title">a link</a>.</p>
+        <Callout label="Note"><p>A callout, as GitHub's alerts render.</p></Callout>
+      </div>
+    </Band>
+  ))}
+
+  <Band labelledby="dividers-title">
+    <SectionTitle eyebrow="Pixel art" title="Dividers" id="dividers-title" />
+    {dividers.map((variant) => (
+      <div class="divider-row">
+        <code>{variant}</code>
+        <Divider variant={variant} />
+        <Divider variant={variant} flanked />
+      </div>
+    ))}
+  </Band>
+
+  <Band tone="ink" labelledby="devices-title">
+    <SectionTitle eyebrow="From xpui-boards" title="Devices" id="devices-title">
+      <p>Each body drawn from the board's own bezel data, at half a CSS pixel per panel pixel.</p>
+    </SectionTitle>
+    <div class="devices">{boards.map((b) => <Device slug={b.slug}>{b.name}</Device>)}</div>
+  </Band>
+</Base>
+
+<style>
+  .specimens { display: grid; gap: 2rem; }
+
+  .swatches { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  .swatch {
+    display: flex;
+    align-items: flex-end;
+    width: 7.5rem;
+    height: 4.5rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-m);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .swatch code { background: var(--paper); }
+
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; }
+
+  .icon-cell { display: grid; justify-items: center; gap: 0.5rem; font-size: 0.75rem; }
+
+  .cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+
+  .divider-row { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+
+  .divider-row > code { justify-self: start; }
+
+  .divider-row :global(.divider) { margin-block: 1rem; }
+
+  .devices { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 2.5rem; }
+</style>

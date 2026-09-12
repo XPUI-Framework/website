@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from 'astro:content';
+import Doc from '../../layouts/Doc.astro';
+import { sourceOf } from '../../lib/content.ts';
+import { siteNav } from '../../lib/docs.ts';
+import { neighbours } from '../../lib/nav.ts';
+import { collisions, slugOf } from '../../lib/routes.ts';
+import { firstParagraph, plain, title } from '../../lib/sections.ts';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('docs');
+  const clashes = collisions(entries.map((entry) => entry.id));
+  if (clashes.length) throw new Error(`two pages on one URL: ${clashes.join('; ')}`);
+  return entries.map((entry) => ({ params: { slug: slugOf(entry.id) }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const entries = await getCollection('docs');
+const nav = siteNav(new Map(entries.map((e) => [e.id, e.body ?? ''])));
+const { Content, headings } = await render(entry);
+const body = entry.body ?? '';
+const [dir, ...rest] = entry.id.split('/');
+const path = rest.join('/');
+const { previous, next } = neighbours(nav.order, entry.id);
+---
+
+<Doc
+  title={`${title(body)} · XPUI`}
+  description={plain(firstParagraph(body))}
+  group={nav.order.find((p) => p.id === entry.id)?.group ?? ''}
+  current={entry.id}
+  groups={nav.groups}
+  headings={headings}
+  previous={previous}
+  next={next}
+  source={sourceOf(dir, path)}
+>
+  <Content />
+</Doc>

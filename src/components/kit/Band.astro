@@ -1,0 +1,18 @@
+---
+interface Props {
+  tone?: 'paper' | 'tint' | 'ink';
+  labelledby?: string;
+}
+
+const { tone = 'paper', labelledby } = Astro.props;
+---
+
+<section class:list={['band', tone, { inverted: tone === 'ink' }]} aria-labelledby={labelledby}>
+  <div class="page"><slot /></div>
+</section>
+
+<style>
+  .band { padding-block: clamp(4rem, 10vw, 7rem); }
+
+  .tint { background: var(--tint); }
+</style>

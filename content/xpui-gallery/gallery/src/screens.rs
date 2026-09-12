@@ -1,0 +1,346 @@
+//! One screen per example.
+//!
+//! Each is a complete `Screen`: a `Message` enum, a `body()` describing what
+//! it looks like, and an `update()` that is the only place its state changes.
+//! Read them in order — `Controls` is the shortest useful one.
+
+use xpui::screen::Screen;
+use xpui::{
+    Divider, Font, Hint, List, ListRow, Modal, NavigationScreen, ProgressBar, Scrim, ScrollView,
+    Section, Slider, Stepper, Text, Toggle, View, vstack,
+};
+
+// -- controls --------------------------------------------------------------
+
+/// Everything adjustable, on one page.
+pub struct Controls {
+    brightness: i32,
+    warmth: i32,
+    frontlight: bool,
+    downloaded: u32,
+}
+
+/// Everything the controls screen can be told.
+#[derive(Clone, Copy)]
+pub enum ControlsMsg {
+    /// An absolute brightness, from the stepper's track.
+    Brightness(i32),
+    /// A nudge of -1 or +1, from the stepper's glyphs or the Left/Right keys.
+    BrightnessStep(i32),
+    /// An absolute warmth, from the slider.
+    Warmth(i32),
+    /// The state the toggle is moving *to*.
+    Frontlight(bool),
+}
+
+impl Default for Controls {
+    fn default() -> Self {
+        Controls::new()
+    }
+}
+
+impl Controls {
+    /// The screen at its starting values.
+    pub fn new() -> Self {
+        Controls {
+            brightness: 60,
+            warmth: 25,
+            frontlight: true,
+            downloaded: 42,
+        }
+    }
+}
+
+impl Screen for Controls {
+    type Message = ControlsMsg;
+
+    fn body(&self) -> impl View<Self::Message> {
+        NavigationScreen::new(ScrollView::new(vstack![14;
+            // A stepper is one focus stop but three touch targets: the two
+            // glyphs nudge, the track sets an absolute value.
+            // The name and the number are the control's, not the screen's. A
+            // screen cannot draw the number: while an edit is open the
+            // framework holds the value and does not tell the screen, so a
+            // label built in `update` stands still while the track moves.
+            Stepper::new(self.brightness)
+                .on_change(ControlsMsg::Brightness)
+                .on_step(ControlsMsg::BrightnessStep)
+                .title("Brightness")
+                .readout("%"),
+
+            Slider::new(self.warmth, 100)
+                .on_change(ControlsMsg::Warmth)
+                .title("Warmth")
+                .readout("%"),
+
+            Divider::new(),
+
+            Toggle::new("Frontlight", self.frontlight, "On", "Off")
+                .on_change(ControlsMsg::Frontlight),
+
+            Text::new("Downloading").font(Font::ui_small()),
+            ProgressBar::percent(self.downloaded),
+        ]))
+        .title("Controls")
+        .hints(
+            Hint::Standard,
+            Hint::Standard,
+            Hint::text("-"),
+            Hint::text("+"),
+        )
+    }
+
+    fn update(&mut self, message: Self::Message) {
+        match message {
+            ControlsMsg::Brightness(value) => self.brightness = value.clamp(0, 100),
+            ControlsMsg::BrightnessStep(delta) => {
+                self.brightness = (self.brightness + delta).clamp(0, 100)
+            }
+            ControlsMsg::Warmth(value) => self.warmth = value.clamp(0, 100),
+            // The toggle hands over the state it is moving to, so no screen
+            // ever writes `!self.something`.
+            ControlsMsg::Frontlight(next) => self.frontlight = next,
+        }
+    }
+
+    fn title(&self) -> Option<&'static str> {
+        Some("Controls")
+    }
+}
+
+// -- lists -----------------------------------------------------------------
+
+/// One-line rows, and rows with a subtitle.
+pub struct Lists {
+    /// The row last tapped, so a test can assert a tap landed.
+    pub chosen: Option<usize>,
+}
+
+impl Default for Lists {
+    fn default() -> Self {
+        Lists::new()
+    }
+}
+
+impl Lists {
+    /// The screen with nothing tapped yet.
+    pub fn new() -> Self {
+        Lists { chosen: None }
+    }
+}
+
+impl Screen for Lists {
+    type Message = usize;
+
+    fn body(&self) -> impl View<Self::Message> {
+        NavigationScreen::new(ScrollView::new(vstack![12;
+            Section::new("One line", List::new()
+                .push(ListRow::new("Wi-Fi").value("Off").on_tap(0))
+                .push(ListRow::new("Bluetooth").value("On").on_tap(1))),
+
+            // A subtitle anywhere makes every row in that list taller, which
+            // is how a themed list keeps its rows uniform.
+            Section::new("With subtitles", List::new()
+                .push(ListRow::new("Storage").subtitle("3.1 GB free").value("32 GB").on_tap(2))
+                .push(ListRow::new("Battery").subtitle("Charging").value("72%").on_tap(3))),
+        ]))
+        .title("Lists")
+    }
+
+    fn update(&mut self, message: Self::Message) {
+        self.chosen = Some(message);
+    }
+
+    fn title(&self) -> Option<&'static str> {
+        Some("Lists")
+    }
+}
+
+// -- dialogs ---------------------------------------------------------------
+
+/// A picker over content.
+pub struct Dialogs {
+    open: bool,
+    font: usize,
+}
+
+/// Everything the dialogs screen can be told.
+#[derive(Clone, Copy)]
+pub enum DialogMsg {
+    /// The row tapped: opens the picker.
+    Open,
+    /// An option chosen from the picker, by index.
+    Chose(usize),
+    /// The picker dismissed without choosing.
+    Dismiss,
+}
+
+const FONTS: [&str; 4] = ["Serif", "Sans", "Mono", "Slab"];
+
+impl Default for Dialogs {
+    fn default() -> Self {
+        Dialogs::new()
+    }
+}
+
+impl Dialogs {
+    /// The screen with the picker closed and the first typeface chosen.
+    pub fn new() -> Self {
+        Dialogs {
+            open: false,
+            font: 0,
+        }
+    }
+
+    /// Whether the picker is up.
+    pub fn is_open(&self) -> bool {
+        self.open
+    }
+
+    /// The typeface the row reads.
+    pub fn chosen(&self) -> &'static str {
+        FONTS[self.font]
+    }
+}
+
+impl Screen for Dialogs {
+    type Message = DialogMsg;
+
+    fn body(&self) -> impl View<Self::Message> {
+        NavigationScreen::new(
+            List::new().push(
+                ListRow::new("Typeface")
+                    .value(self.chosen())
+                    .on_tap(DialogMsg::Open),
+            ),
+        )
+        .title("Dialogs")
+        // A dialog captures input: nothing behind it can be reached, and the
+        // side buttons walk its options rather than the list underneath. A
+        // screen decides only whether it is in the tree.
+        .overlay_if(
+            self.open,
+            Modal::picker("Typeface", FONTS)
+                .selected(self.font)
+                .on_select(DialogMsg::Chose)
+                .scrim(Scrim::Dim),
+        )
+    }
+
+    fn update(&mut self, message: Self::Message) {
+        match message {
+            DialogMsg::Open => self.open = true,
+            DialogMsg::Chose(index) => {
+                self.font = index.min(FONTS.len() - 1);
+                self.open = false;
+            }
+            DialogMsg::Dismiss => self.open = false,
+        }
+    }
+
+    fn on_background_tap(&self, _point: xpui::Point) -> Option<Self::Message> {
+        self.open.then_some(DialogMsg::Dismiss)
+    }
+
+    fn title(&self) -> Option<&'static str> {
+        Some("Dialogs")
+    }
+}
+
+// -- scrolling -------------------------------------------------------------
+
+/// More rows than fit on any panel.
+pub struct Scrolling;
+
+impl Default for Scrolling {
+    fn default() -> Self {
+        Scrolling::new()
+    }
+}
+
+impl Scrolling {
+    /// The screen; it holds no state.
+    pub fn new() -> Self {
+        Scrolling
+    }
+}
+
+impl Screen for Scrolling {
+    type Message = usize;
+
+    fn body(&self) -> impl View<Self::Message> {
+        // Deliberately longer than any panel. The runtime scrolls to keep the
+        // focused row visible; the screen never tracks an offset.
+        let rows = (0..24).map(|index| {
+            ListRow::new(ROWS[index % ROWS.len()])
+                .value(if index % 3 == 0 { "On" } else { "Off" })
+                .on_tap(index)
+        });
+
+        NavigationScreen::new(ScrollView::new(vstack![10;
+            Section::new("A long list", List::new().extend(rows)),
+        ]))
+        .title("Scrolling")
+    }
+
+    fn update(&mut self, _message: Self::Message) {}
+
+    fn title(&self) -> Option<&'static str> {
+        Some("Scrolling")
+    }
+}
+
+const ROWS: [&str; 8] = [
+    "Hyphenation",
+    "Justification",
+    "Margins",
+    "Line spacing",
+    "Page turn",
+    "Refresh rate",
+    "Sleep timer",
+    "Orientation",
+];
+
+// -- text ------------------------------------------------------------------
+
+/// Every font role and weight, and a line that runs off the panel.
+pub struct TextSizes;
+
+impl Default for TextSizes {
+    fn default() -> Self {
+        TextSizes::new()
+    }
+}
+
+impl TextSizes {
+    /// The screen; it holds no state.
+    pub fn new() -> Self {
+        TextSizes
+    }
+}
+
+impl Screen for TextSizes {
+    type Message = ();
+
+    fn body(&self) -> impl View<Self::Message> {
+        NavigationScreen::new(ScrollView::new(vstack![10;
+            Text::new("Reader").font(Font::reader()),
+            Text::new("Interface").font(Font::ui()),
+            Text::new("Interface bold").font(Font::ui().bold()),
+            Text::new("Small").font(Font::ui_small()),
+            Divider::new(),
+            // Wider than the panel on purpose: `Text` does not truncate, so
+            // the line runs past the content inset and the last glyph is cut
+            // by the panel's edge. `ListRow` is the widget that measures and
+            // ellipses; the Developers example has rows long enough to show it.
+            Text::new("A line long enough that it cannot possibly fit across the panel"),
+        ]))
+        .title("Text")
+    }
+
+    fn update(&mut self, _message: Self::Message) {}
+
+    fn title(&self) -> Option<&'static str> {
+        Some("Text")
+    }
+}

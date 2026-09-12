@@ -1,0 +1,66 @@
+---
+import Card from './kit/Card.astro';
+import Icon from './kit/Icon.astro';
+
+interface Repo {
+  github: string;
+  docs: string;
+  description: string;
+}
+
+interface Props {
+  groups: { title: string; repos: Repo[] }[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="groups">
+  {groups.map(({ title, repos }) => (
+    <section class="group">
+      <h3>{title}</h3>
+      <div class="cards">
+        {repos.map((repo) => (
+          <Card>
+            <p class="name"><a class="stretched" href={repo.docs}>{repo.github}<Icon name="arrow" /></a></p>
+            <p class="description" set:html={repo.description} />
+            <p class="links"><a href={`https://github.com/XPUI-Framework/${repo.github}`}>GitHub <Icon name="external" /></a></p>
+          </Card>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>
+
+<style>
+  .groups { display: grid; gap: 2.5rem; }
+
+  h3 { margin: 0 0 1rem; color: var(--ink-soft); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  .cards { display: grid; gap: 1rem; }
+
+  @media (min-width: 40rem) {
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 64rem) {
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .name { margin: 0 0 0.25rem; font: 600 1rem var(--font-mono); }
+
+  /* The title covers the card, so the whole card is the link; the GitHub link sits above it. */
+  .name a { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+
+  .name :global(.icon) { color: var(--ink-faint); transition: transform 150ms ease, color 150ms ease; }
+
+  .description { flex: 1; margin: 0 0 0.75rem; color: var(--ink-soft); font-size: 0.9375rem; line-height: 1.55; }
+
+  .links { position: relative; z-index: 1; margin: 0; font: 500 0.8125rem var(--font-mono); }
+
+  .links a { display: inline-flex; align-items: center; gap: 0.35rem; min-height: 2rem; color: var(--ink-soft); text-decoration: none; }
+
+  .links a:hover { color: var(--ink); }
+
+  .links :global(.icon) { color: var(--ink-faint); }
+</style>

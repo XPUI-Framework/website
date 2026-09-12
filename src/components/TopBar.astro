@@ -1,0 +1,70 @@
+---
+import ThemeSwitch from './kit/ThemeSwitch.astro';
+import Mark from './Mark.astro';
+
+const inDocs = Astro.url.pathname.startsWith('/docs/');
+---
+
+<header class="topbar">
+  <div class="page bar">
+    <a class="home" href="/" aria-label="XPUI, home"><Mark size={32} /></a>
+    <nav aria-label="Site">
+      <ul>
+        <li><a href="/docs/" aria-current={inDocs ? 'true' : undefined}>Docs</a></li>
+        <li><a href="https://github.com/XPUI-Framework">GitHub</a></li>
+      </ul>
+    </nav>
+    <ThemeSwitch />
+  </div>
+  {Astro.slots.has('menu') && (
+    <details class="menu">
+      <summary class="page">Menu</summary>
+      <div class="page"><slot name="menu" /></div>
+    </details>
+  )}
+</header>
+
+<style>
+  .topbar { border-bottom: 1px solid var(--line); }
+
+  .bar { display: flex; align-items: center; gap: 1.75rem; min-height: 4.5rem; }
+
+  .home { display: flex; min-width: var(--touch); min-height: var(--touch); align-items: center; }
+
+  nav { flex: 1; }
+
+  ul { display: flex; gap: 0.25rem; margin: 0; padding: 0; list-style: none; }
+
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    padding: 0 0.875rem;
+    border-radius: var(--radius-full);
+    color: var(--ink-soft);
+    font: 500 0.875rem var(--font-mono);
+    text-decoration: none;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  nav a:hover { background: var(--tint-strong); color: var(--ink); }
+
+  nav a[aria-current] { background: var(--tint-strong); color: var(--ink); }
+
+  .menu { border-top: 1px solid var(--line); }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: var(--touch);
+    font: 500 0.875rem var(--font-mono);
+    cursor: pointer;
+  }
+
+  .menu[open] > div { padding-bottom: 1.5rem; }
+
+  @media (min-width: 48rem) {
+    .menu { display: none; }
+  }
+</style>

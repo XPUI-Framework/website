@@ -1,0 +1,38 @@
+---
+import Divider from './Divider.astro';
+import Eyebrow from './Eyebrow.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  id: string;
+  /** A pixel divider above the title, where a section opens a new chapter of the page. */
+  ornament?: boolean;
+}
+
+const { eyebrow, title, id, ornament = false } = Astro.props;
+---
+
+{ornament && <div class="ornament"><Divider /></div>}
+<header class="section-title">
+  <Eyebrow>{eyebrow}</Eyebrow>
+  <h2 id={id}>{title}</h2>
+  {Astro.slots.has('default') && <div class="lede"><slot /></div>}
+</header>
+
+<style>
+  .section-title { max-width: var(--measure); margin-bottom: clamp(2rem, 5vw, 3rem); }
+
+  .ornament :global(.divider) { justify-content: flex-start; margin: 0 0 2.5rem; }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(1.625rem, 4vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .lede { margin-top: 0.75rem; color: var(--ink-soft); font-size: 1.0625rem; }
+
+  .lede :global(p) { margin: 0; }
+</style>

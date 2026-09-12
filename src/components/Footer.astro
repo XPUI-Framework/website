@@ -1,0 +1,33 @@
+---
+import Mark from './Mark.astro';
+---
+
+<footer class="footer">
+  <div class="page row">
+    <a class="home" href="/" aria-label="XPUI, home"><Mark size={32} /></a>
+    <p class="small">© 2026 Thiago Holanda · <a href="https://github.com/XPUI-Framework/xpui-framework/blob/main/LICENSE">MIT licence</a></p>
+    <ul class="links">
+      <li><a href="/docs/">Docs</a></li>
+      <li><a href="https://github.com/XPUI-Framework">GitHub</a></li>
+      <li><span class="mail">contact [at] xpui.rs</span></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .footer { margin-top: auto; padding-block: 2.5rem; border-top: 1px solid var(--line); background: var(--tint); }
+
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+
+  .home { display: inline-flex; min-width: var(--touch); min-height: var(--touch); align-items: center; }
+
+  .small { flex: 1; margin: 0; color: var(--ink-soft); font-size: 0.8125rem; }
+
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0; padding: 0; list-style: none; font: 0.8125rem var(--font-mono); }
+
+  .links a { color: var(--ink-soft); text-decoration: none; }
+
+  .links a:hover { color: var(--ink); }
+
+  .mail { color: var(--ink-soft); user-select: all; }
+</style>

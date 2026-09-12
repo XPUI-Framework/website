@@ -1,0 +1,83 @@
+/*
+ * The only file with colour literals, theme selectors, tints or a colour function.
+ * Two tones, ink and paper; everything else is a tint of ink on paper, derived here.
+ */
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --tone-ink: #1A1A1A;
+  --tone-paper: #F2F2EE;
+  --ink: var(--tone-ink);
+  --paper: var(--tone-paper);
+  --panel-ink: #1A1A1A;
+  --panel-paper: #F2F2EE;
+
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-prose: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+  --measure: 44rem;
+  --page: 84rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --touch: 2.75rem;
+
+  --radius-s: 0.375rem;
+  --radius-m: 0.75rem;
+  --radius-l: 1.25rem;
+  --radius-full: 999px;
+
+  color-scheme: light;
+}
+
+/* Tints are recomputed wherever ink and paper swap, so an inverted band gets its own. */
+:root,
+.inverted {
+  --ink-soft: color-mix(in srgb, var(--ink) 72%, var(--paper));
+  --ink-faint: color-mix(in srgb, var(--ink) 50%, var(--paper));
+  --line: color-mix(in srgb, var(--ink) 14%, var(--paper));
+  --tint: color-mix(in srgb, var(--ink) 5%, var(--paper));
+  --tint-strong: color-mix(in srgb, var(--ink) 9%, var(--paper));
+  --code-ink: color-mix(in srgb, var(--ink) 82%, var(--paper));
+  --device-body: color-mix(in srgb, var(--ink) 88%, var(--paper));
+  --device-edge: color-mix(in srgb, var(--ink) 74%, var(--paper));
+  --device-well: color-mix(in srgb, var(--ink) 95%, var(--paper));
+  --device-key: color-mix(in srgb, var(--ink) 78%, var(--paper));
+  --dither: repeating-conic-gradient(var(--ink) 0 25%, transparent 0 50%);
+}
+
+.inverted {
+  --ink: var(--tone-paper);
+  --paper: var(--tone-ink);
+  background: var(--paper);
+  color: var(--ink);
+  color-scheme: dark;
+}
+
+.astro-code, .astro-code span { color: var(--shiki-light); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --tone-ink: #F2F2EE;
+    --tone-paper: #1A1A1A;
+    color-scheme: dark;
+  }
+
+  :root:not([data-theme='light']) .inverted { color-scheme: light; }
+
+  :root:not([data-theme='light']) :is(.astro-code, .astro-code span) { color: var(--shiki-dark); }
+}
+
+:root[data-theme='dark'] {
+  --tone-ink: #F2F2EE;
+  --tone-paper: #1A1A1A;
+  color-scheme: dark;
+}
+
+:root[data-theme='dark'] .inverted { color-scheme: light; }
+
+:root[data-theme='dark'] :is(.astro-code, .astro-code span) { color: var(--shiki-dark); }

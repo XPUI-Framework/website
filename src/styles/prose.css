@@ -1,0 +1,70 @@
+/* A synced page as it reads: the repository's markdown, typeset. */
+
+/*
+ * A reading column in the middle, and room at the sides for what needs it: a table, a code
+ * block, a diagram or a figure spans the whole article rather than being squeezed.
+ */
+.prose {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(0, 1fr)
+    [content-start] minmax(0, var(--measure))
+    [content-end] minmax(0, 1fr)
+    [full-end];
+  min-width: 0;
+}
+
+.prose > * { grid-column: content; }
+
+.prose > :is(table, pre, figure, .diagram, .astro-code, .code-shell) { grid-column: full; }
+
+.prose > h1 { margin: 0 0 1rem; font-size: clamp(1.75rem, 5vw, 2.25rem); }
+
+.prose > h1 + p, .prose > h1 + aside + p { color: var(--ink-soft); font-size: 1.1875rem; line-height: 1.55; }
+
+.prose h2 { margin: 2.5rem 0 0.75rem; font-size: 1.375rem; }
+.prose h3 { margin: 2rem 0 0.5rem; font-size: 1.125rem; }
+.prose h4 { margin: 1.5rem 0 0.5rem; font-size: 1rem; }
+
+.prose :is(h2, h3, h4) { scroll-margin-top: 1rem; }
+
+.prose .anchor { text-decoration: none; }
+
+.prose p, .prose li { overflow-wrap: break-word; }
+
+.prose table {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: 1.25rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.prose :is(th, td) {
+  padding: 0.625rem 1rem 0.625rem 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+/* A name in a table is one word: the column takes the room it needs, and the table scrolls if it must. */
+.prose :is(th, td) code { white-space: nowrap; }
+
+.prose th { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; }
+
+
+.prose blockquote { margin-inline: 0; padding-left: 1.25rem; box-shadow: inset 3px 0 0 var(--line); color: var(--ink-soft); }
+
+.prose .diagram { margin: 1.5rem 0; overflow-x: auto; }
+
+/* Full size where there is room; on a narrow screen it shrinks to a legible floor, then scrolls. */
+.prose .diagram svg {
+  display: block;
+  width: clamp(min(var(--natural), 32rem), 100%, var(--natural));
+  max-width: none;
+  height: auto;
+  margin-inline: auto;
+}
