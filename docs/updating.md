@@ -42,8 +42,8 @@ copy of a page.
    npm run sync
    ```
 
-   It prints what changed per repository, draws any diagram whose text changed, exports the
-   board data again if `xpui-boards` moved, and deletes what no source produces any more.
+   It prints what changed per repository, draws any diagram whose text changed, and deletes what
+   no source produces any more.
 
 5. **Read the diff of `content/`.** It is exactly what will go live.
 
@@ -72,8 +72,8 @@ copy of a page.
 | diagrams | the `mermaid` fences in those pages | redrawn when their text changes |
 | links to source files | the page's links, pinned to the synced commit | re-pinned |
 | the home page's code sample | `Controls` in `xpui-gallery`'s `gallery/src/screens.rs` | updated |
-| the screenshots | `xpui-gallery`'s goldens | updated when the goldens are blessed again |
-| the device drawings | `xpui-boards`' bezel data, through `tools/boards` | exported again |
+| the screenshots | `xpui-gallery`'s goldens for the X3 | updated when the goldens are blessed again |
+| the device around them | `public/devices/*.webp`, Xteink's photograph, masked | the site's own file; unchanged by a sync |
 | the repository cards' descriptions | the organisation profile's table | updated |
 | `llms.txt` and `llms-full.txt` | the pages | regenerated |
 | the sidebar's order, groups and labels | `nav.json` | **by hand** |
@@ -89,7 +89,6 @@ copy of a page.
 | `no line starting with "fn body(&self)"` | the gallery's screen was restructured | point `site.json`'s `code.within` and `code.item` at what now holds it |
 | `… is not synced — add it to sources.json` | `site.json` names a golden the sync does not copy | add the file to `xpui-gallery`'s patterns in `sources.json` |
 | `diagram … still has colours` | a diagram uses a style the palette cannot hold | change the diagram in its repository, or `scripts/mermaid.json` |
-| `the board exporter failed` | `xpui-boards` changed a type the exporter reads | update `tools/boards/src/main.rs` to match |
 | `is not on origin/main` | a source was synced with `--unpushed` | push that repository, sync again |
 
 ## The API reference

@@ -32,7 +32,6 @@ index.
 ```text
 xpui             8d5ae9c  11 files, 0 changed
 brand            a44da1b  5 files, 0 changed  (NOT PUSHED)
-boards           7 described, unchanged
 diagrams         13 distinct, 0 rendered
 ```
 
@@ -40,21 +39,15 @@ diagrams         13 distinct, 0 rendered
 pushed and the sync runs again. Read the diff of `content/` before committing it: it is the
 documentation that will go live.
 
-## The boards
-
-The home page draws each device from `xpui-boards`' own bezel data. That data is Rust
-constants built by `const fn`, so the sync does not parse it: it unpacks `xpui-boards` and `xpui`
-at their synced commits with `git archive`, builds `tools/boards` against them offline, and
-writes what it prints to `content/boards.json`. It does this again only when either commit or
-the exporter changes. It needs `cargo`, and installs nothing: the toolchain is the one
-`xpui-boards`' `rust-toolchain.toml` names.
-
 ## Diagrams
 
 Every `mermaid` fence in a synced page is drawn to SVG by `scripts/diagrams.ts`, one browser for
 all of them, and saved as `content/diagrams/<key>.svg`, where the key is a hash of the diagram's
 text. A diagram whose text has not changed is not drawn again, unless `scripts/mermaid.json` or
 the version of `@mermaid-js/mermaid-cli` changed, which redraws them all.
+
+A `flowchart BT` is rendered as `flowchart TD`, so a dependency graph stands the right way up
+with the framework at its foot.
 
 Mermaid is told to draw in two sentinel colours. The sync replaces them with the site's two
 tones, `var(--ink)` and `var(--paper)`, counts black as ink and white as paper, and **stops if any

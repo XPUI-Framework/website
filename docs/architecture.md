@@ -4,7 +4,7 @@ The site renders other repositories' markdown and holds none of its own. Every l
 job, and each depends only on the layers before it.
 
 ```text
-sources.json ──► scripts/sync.ts ──► content/            the synced files, the diagrams, boards.json, manifest.json
+sources.json ──► scripts/sync.ts ──► content/            the synced files, the diagrams, manifest.json
                                          │
                 src/lib/        pure functions over content/: routes, links, nav, sections, panels
                 src/markdown/   one remark or rehype plugin per job, and the pipeline that orders them
@@ -18,13 +18,9 @@ sources.json ──► scripts/sync.ts ──► content/            the synced 
 
 **`scripts/`** runs on a developer's machine, never in a browser and never at build time:
 `sync.ts` copies from the sibling checkouts (see [syncing.md](syncing.md)), `diagrams.ts` draws
-Mermaid, `boards.ts` builds `tools/boards` to export the device data, `status.ts` reports what the
-site is behind on (see [updating.md](updating.md)), `git.ts` holds the read-only git queries, and
-`gate.ts` with `checks/` is the gate (see [gate.md](gate.md)).
-
-**`tools/boards/`** is a dependency-free Rust program that prints every board `xpui-boards`
-describes as JSON. The sync builds it against `xpui-boards` and `xpui` unpacked from their synced
-commits, offline.
+Mermaid, `status.ts` reports what the site is behind on (see [updating.md](updating.md)),
+`git.ts` holds the read-only git queries, and `gate.ts` with `checks/` is the gate (see
+[gate.md](gate.md)).
 
 **`content/`** is written by the sync alone. `manifest.json` names, for each repository, the
 commit it was read at and every file's git blob id, and for each diagram the blob id of its SVG.
@@ -42,7 +38,6 @@ commit it was read at and every file's git blob id, and for each diagram the blo
 | `render.ts` | render a fragment through the site's own pipeline |
 | `diagrams.ts` | find Mermaid fences, and hold a rendered SVG to two tones |
 | `extract.ts` | a Rust item cut out of a file for the home page, dedented |
-| `boards.ts` | the boards' data, and where a panel sits in a drawn device |
 | `site.ts`, `repos.ts` | `site.json`, and the organisation profile's repository table |
 | `icons.ts`, `dividers.ts` | the pixel icons and the pixel dividers, as grids |
 | `llms.ts`, `glob.ts`, `warning.ts`, `assets.ts` | `llms.txt`, file patterns, the standard's warning, brand endpoints |

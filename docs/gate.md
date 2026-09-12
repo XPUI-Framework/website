@@ -9,7 +9,7 @@ checks are one file each in `scripts/checks/`. CI runs the same command.
 
 | Stage | What it proves | When it fails |
 |---|---|---|
-| synced content matches the manifest | every file in `content/`, diagrams and `boards.json` included, is byte for byte the git blob `manifest.json` names, nothing else is there, and every source commit is on its `origin/main` | run `npm run sync`; if a repository is not pushed, push it first |
+| synced content matches the manifest | every file in `content/`, diagrams included, is byte for byte the git blob `manifest.json` names, nothing else is there, and every source commit is on its `origin/main` | run `npm run sync`; if a repository is not pushed, push it first |
 | types | `astro check` | a type error, named with its file |
 | unit tests | `node --test` over `src/**/*.test.ts` | a pure function changed behaviour |
 | build | `astro build --force` | a page threw: a nav entry naming no page, two pages on one URL, a link out of its repository, a diagram not drawn. `--force` because Astro caches rendered markdown by its text, and a synced page's links change with the commit even when its text does not |

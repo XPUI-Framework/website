@@ -43,8 +43,9 @@ for maintaining the site.
 | `Tag` | a small rounded label |
 | `Icon` | a pixel icon from `src/lib/icons.ts`: sun, moon, monitor, arrow, external |
 | `ThemeSwitch` | light · system · dark, as three icons in one rounded control |
+| `EditLink` | "Edit this page on GitHub", at the foot of every synced page |
 | `Divider` | a pixel-art rule from `src/lib/dividers.ts`, optionally flanked by hairlines |
-| `Device` | a board's body, drawn from `xpui-boards`' bezel data, with a golden in its panel |
+| `Device` | the photographed X3, with a golden behind its cut-out screen |
 
 Corners: `--radius-s` (6 px) for small things, `--radius-m` (12 px) for callouts and menus,
 `--radius-l` (20 px) for cards and code, `--radius-full` for buttons and the switch.
@@ -108,27 +109,39 @@ gate's link stage reports any id that appears twice on a page.
 
 ## The reading column
 
-A documentation page is a grid: prose keeps a `--measure` column so lines stay readable, and
-anything that needs room — a table, a code block, a diagram, a figure — spans the whole article.
-Inline code in a table never wraps, so a repository's name stays one word.
+Everything on a documentation page shares one column of `--measure`: prose, code, tables and
+diagrams line up on both edges, because a page that changes width down its length reads as
+several pages. A table that needs more room scrolls inside itself, and inline code in a table
+never wraps, so a repository's name stays one word.
 
-## Screenshots and devices
+Sizes agree too: prose at 1rem, code at 0.9375rem, inline code at 0.9em of its line. The first
+paragraph of a page is its lede, one step larger, on every page.
+
+## Screenshots and the device
 
 The home page shows the gallery's goldens for the **Xteink X3** — the PNGs its tests compare
-against — inside devices drawn from each board's own bezel data: the body, the panel well and every key, in tenths of a
-millimetre, exported from `xpui-boards` by `tools/boards` at sync time. The shell's corners and a key's are
-the simulator's own proportions; the well is a thin recess rather than a frame, and a hairline
-edge gives the body its depth.
+against — inside Xteink's own photograph of the device, masked so that the screen is a hole: the
+background is transparent, and the promotional screen is cut out. `public/devices/x3-black.webp`
+is the black body, shown on paper; `x3-white.webp` is the white one, shown on ink. Both are made
+by `tools/devices/mask.sh` from the photographs beside it, which carries the measurements. Which one is
+used is `--device-frame`, a token, so it follows the theme like every other colour.
 
-A golden is shown at **half a CSS pixel per panel pixel**: one device pixel each on a 2× screen,
-where it is drawn `pixelated` and exact; on any other screen it is scaled smoothly. It is shown
-in ink on paper in both themes — `--panel-ink` and `--panel-paper` never swap — through
-`mix-blend-mode`, so a panel holds exactly those two colours at its native size.
+A golden sits behind the hole at **half a CSS pixel per panel pixel**: 264 CSS pixels for the
+X3's 528, one device pixel each on a 2× screen, where it is drawn `pixelated`. The frame's own
+proportions size the rest, so the picture cannot drift out of its window. It is shown in ink on
+paper in both themes — `--panel-ink` and `--panel-paper` never swap — through `mix-blend-mode`.
+
+The photograph is Xteink's work, and the site says so in the footer: the project is not
+affiliated with, endorsed by or sponsored by Xteink.
 
 The goldens reach the page through Vite (`src/images.ts`), which serves them the same way in
 `npm run dev` and in the build, as files, never inlined.
 
 ## Diagrams
+
+A dependency graph is drawn the right way up: a `flowchart BT`, which puts the depended-upon
+crate at the top, is read as `flowchart TD`, so `xpui` sits at the foot of the drawing with every
+arrow pointing down into it. Same nodes, same arrows, the base at the base.
 
 Mermaid diagrams are drawn by the sync with the **ELK** layout: nodes in layers and edges routed
 orthogonally, which is what keeps a graph of thirteen repositories legible instead of a bundle of
@@ -136,3 +149,12 @@ curves. They are inlined and use the two tones, so they invert with the theme.
 
 A diagram is shown at the size it was drawn where there is room. On a narrower screen it shrinks
 to a floor of 32rem and scrolls beyond that, rather than shrinking until its labels vanish.
+
+## What a card does, and what a hover may not do
+
+A card carries its border at rest and changes its colour on hover, so nothing shifts under the
+pointer. Where the whole card is a link, the title's link is stretched across it; any other link
+inside sits above that, and hovering it keeps the card lit rather than stealing the state.
+
+On a documentation page the contents on the right mark the section being read, and the sidebar
+opens scrolled to the page you are on. Both are in `src/client/site.js`, the one script.
