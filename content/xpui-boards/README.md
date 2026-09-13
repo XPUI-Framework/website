@@ -1,6 +1,11 @@
 [![CI](https://github.com/XPUI-Framework/xpui-boards/actions/workflows/ci.yml/badge.svg)](https://github.com/XPUI-Framework/xpui-boards/actions/workflows/ci.yml) [![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-# `xpui-boards`
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/logo-black.png">
+  <img src="assets/logo-white.png" alt="XPUI" width="64" height="64">
+</picture>
+
+# Boards
 
 > [!WARNING]
 > Under heavy development. Not production-ready. The API can break without
@@ -8,18 +13,20 @@
 
 Seven devices — six e-ink panels and one LCD — as data: panel size,
 orientation, key row, refresh time, and the body in tenths of a millimetre. Nothing here draws anything. A board
-is what an application *injects* into a backend and a simulator, which is why
+is what an application _injects_ into a backend and a simulator, which is why
 the framework can describe a device it has never heard of and why adding one
 is a literal rather than a patch.
 
+Every document in this repository is listed in [docs/README.md](docs/README.md).
+
 ## Which crate you want
 
-| | |
-|---|---|
+|                         |                                                                                                                                                                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [`pimoroni`](pimoroni/) | Badger 2040, Tufty 2040, Inky Frame. The first two ship firmware and have been run over a debug probe; the Inky Frame's 600 × 448 seven-colour panel is described so a screen can be laid out for it and seen in the simulator |
-| [`xteink`](xteink/) | X3, X4, X4 Pro |
-| [`seeed`](seeed/) | Sticky |
-| [`core`](core/) | `Board`, `Orientation`, `Bezel`, and the `Plan`/`Run`/`Key` const DSL. Describes no device at all |
+| [`xteink`](xteink/)     | X3, X4, X4 Pro                                                                                                                                                                                                                 |
+| [`seeed`](seeed/)       | Sticky                                                                                                                                                                                                                         |
+| [`core`](core/)         | `Board`, `Orientation`, `Bezel`, and the `Plan`/`Run`/`Key` const DSL. Describes no device at all                                                                                                                              |
 
 **Take the vendors you target and none of the others.** That is why there is a
 crate per manufacturer rather than one list: a firmware for a Badger has no
@@ -65,7 +72,7 @@ is the worked example across all three vendors. The crates depend only on
 [`xpui`](https://github.com/XPUI-Framework/xpui-framework), for `Button` and
 `KeyRow` — a key is a fact about hardware, and the crate describing a device
 should not have to depend on the one drawing it to say so. Nothing is on
-crates.io yet, which is what the banner above is about.
+crates.io yet, which is why the dependency above is a `git` URL.
 
 ## Checking it
 
@@ -78,15 +85,6 @@ in Rust, holding nothing it does not run. `./build-and-test.sh fix` formats
 in place first. How a change is reviewed is in
 [docs/contributing.md](docs/contributing.md).
 
-## Where next
-
-| | |
-|---|---|
-| [docs/adding-a-board.md](docs/adding-a-board.md) | your board is not here: the three numbers from the datasheet, the key row, the body, and what proves it |
-| [docs/boards.md](docs/boards.md) | the seven, vendor by vendor: what runs on hardware, and how a screen reaches each panel |
-| [docs/design.md](docs/design.md) | the arguments behind choices the code states in one sentence |
-| [docs/contributing.md](docs/contributing.md) | building it, the gate, the five review steps, and how a commit is written |
-
 ## Where it sits
 
 Every arrow is a dependency in a `Cargo.toml`, and they all point inward
@@ -96,7 +94,7 @@ knowing it exists, and a firmware reaches whatever it needs directly rather
 than through whoever happens to sit above it.
 
 ```mermaid
-flowchart BT
+flowchart TD
   xpui["xpui<br/>the framework"]
   chrome["xpui-chrome<br/>components"]
   boards["xpui-boards<br/>seven devices"]

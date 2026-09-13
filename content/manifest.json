@@ -1,27 +1,33 @@
 {
   "diagrams": {
+    "0f77fbcb59f9565d": {
+      "blob": "93bf9a881b39552a8fc9779942f53c0c123b0afc",
+      "from": [
+        "xpui-cpp/README.md"
+      ]
+    },
+    "123a16447debedf0": {
+      "blob": "a7ab556011d7fe8fc45ed81d7bd51662b5027c84",
+      "from": [
+        "xpui-chrome/README.md"
+      ]
+    },
     "170e5c97bd95eaa2": {
       "blob": "f8568c48266fee0bd28f2c512724f8663bfa953a",
       "from": [
         "xpui-backends/README.md"
       ]
     },
-    "39830fbde947c3ae": {
-      "blob": "2d4a4115fa276d3aec14eae179d39bbad314ddb6",
+    "22530c42a475221d": {
+      "blob": "5ff33bda39ece22d7f6b724ff3999e8bab2e3798",
+      "from": [
+        "xpui-gallery/README.md"
+      ]
+    },
+    "3e30ae02b6fa2c8f": {
+      "blob": "dcf965d00919708f5c2badaa9106b933e128b9b9",
       "from": [
         "xpui-simulator/README.md"
-      ]
-    },
-    "434a8f30e9932cc8": {
-      "blob": "170dea6e62d45a8ab2190c88abbcee941c34eeda",
-      "from": [
-        "xpui-dev/README.md"
-      ]
-    },
-    "449d1d002f652666": {
-      "blob": "de54ac3c16344d2825a603f6472069d1a018c211",
-      "from": [
-        "xpui-chrome/README.md"
       ]
     },
     "45fbf15131bd268f": {
@@ -30,52 +36,46 @@
         "xpui/docs/architecture.md"
       ]
     },
+    "7c04fff23b2d2eac": {
+      "blob": "254e45e886d40606aa71d72df45efb5d4d78cd0d",
+      "from": [
+        "xpui-dev/README.md"
+      ]
+    },
     "8934e04f4b6a1aae": {
       "blob": "c01db2d3f40de599fe3fee81f4d1a8b63760c16e",
       "from": [
         "xpui-cpp/docs/boundary.md"
       ]
     },
-    "8b89a9f2069085b2": {
-      "blob": "0596282adf90597b290b50c8ab3deb85495edbed",
-      "from": [
-        "xpui-boards/README.md"
-      ]
-    },
-    "a3bf6032184ddb4b": {
-      "blob": "777f989f3d5c13b6e8ec1ef70d7061e71073fa09",
+    "9b0da6a4b51f7228": {
+      "blob": "f784c9c1daeef4ce262678dd07c6367eefd93ecd",
       "from": [
         "xpui-backends/README.md"
       ]
     },
-    "bd11fca4459beddf": {
-      "blob": "cc240edf966df695ebf2ccc6af8b1a01f05782bb",
+    "a9e5e596ff03d0a7": {
+      "blob": "86ce6b37451db082728238a05c5beed4d42027d9",
       "from": [
-        "xpui-gallery/README.md"
+        "xpui-boards/README.md"
       ]
     },
-    "c3ce6e5d9b06651c": {
-      "blob": "ee715f6360d77af2977d5a9870facd968347b270",
+    "c2541bb88cf92d98": {
+      "blob": "2278b3d20a62a0951cb3fc4508a67b161d093139",
       "from": [
         "xpui-esp32/README.md"
       ]
     },
-    "cddddfc056fc15e9": {
-      "blob": "64f5865d02e216be982545e51128be5a5740eab8",
-      "from": [
-        "xpui/README.md"
-      ]
-    },
-    "df1a01f82f5784f4": {
-      "blob": "6d9422a94726ea1c8b079b14179db0278f8caff1",
+    "eb147e5e64cb4338": {
+      "blob": "85f9e6277a5a328dee8c8bd82dfebea6c74c0d29",
       "from": [
         "xpui-rp2040/README.md"
       ]
     },
-    "fbc94c3f3ed5aef3": {
-      "blob": "cf67b28eb19dae97d9b03c930b718b7a3bc971e5",
+    "f93831f366beffea": {
+      "blob": "e5b47715ef478618fafc68bb69d886c0c1ecedfb",
       "from": [
-        "xpui-cpp/README.md"
+        "xpui/README.md"
       ]
     }
   },
@@ -83,12 +83,12 @@
   "repos": {
     ".github": {
       "files": {
-        "profile/README.md": "d06b94a1051fc0539cfa3c069b443e5a61bcaf4d"
+        "profile/README.md": "db593646b1d10c8643b648292591b4a2e709bca0"
       },
       "github": ".github",
       "pages": false,
       "pushed": true,
-      "sha": "380c14f46ea6ab7afd1b3a4aca754331b193a361"
+      "sha": "34d68a7ed37a8d05d624c1825d1add744aa9e2d3"
     },
     "brand": {
       "files": {
@@ -101,108 +101,108 @@
       "github": "brand",
       "pages": false,
       "pushed": true,
-      "sha": "a44da1b5bff217cdc0e24f0acea845020118b33a"
+      "sha": "5ee44f616d82343aeabdd735e5743f22dcf69301"
     },
     "xpui": {
       "files": {
-        "README.md": "4cca75543fad6842b152d0d9f1013c75f06c2471",
-        "docs/a-second-screen.md": "722eb8ceccc1305f8686c5ac4cf1c14e4b0512d1",
-        "docs/architecture.md": "9d54bd950efeee4f1460b777fced73e318ab264f",
-        "docs/host.md": "0e5f67322ede6e7733c66ba40dd225d198560a30",
-        "docs/orientation.md": "20c8534ff3e57bf21d7ada93556bd01a20451c1c",
-        "docs/reference.md": "53c871c4484f8cfa26a315dbe5ed763943c4a167",
-        "docs/testing.md": "b7ad3f547d5ea660b4abadc342ee49b477f306e6",
-        "docs/tutorial.md": "4617f2035dca10a7f2d9d11e0a28c85be1b658fd",
-        "docs/writing-a-backend.md": "26ad4aef2714e58a7d7cbcf6b4d8fb40d0b5e249",
+        "README.md": "f2b4d77bca403fb6fbfbf3d30bc042d655a30fe8",
+        "docs/a-second-screen.md": "f512897859bad453e2b9e403e54d28da2fc7cd1d",
+        "docs/architecture.md": "78bdfe153d1863c55e5665f4298e23464c47389b",
+        "docs/host.md": "39a46f43a4a5c63f0f70ea957d10a9d77b043b61",
+        "docs/orientation.md": "9d68db776bc5ff8dfd4dd7757ab4d57e51c550f8",
+        "docs/reference.md": "50f1a9ade18d3579f2728a684432dfd60e1793f5",
+        "docs/testing.md": "2efe4b936bc01e5db37a8e0a0ee5c410709e55a8",
+        "docs/tutorial.md": "65df147c62adc54ed0928473cea3a95d7a56c4a0",
+        "docs/writing-a-backend.md": "974764845087ca7463b7049780182083571f39dd",
         "docs/writing-a-widget.md": "95cfe5c48ba5da76fdce2120f4f24c180f9997ab"
       },
       "github": "xpui-framework",
       "pages": true,
       "pushed": true,
-      "sha": "8d5ae9c0e98e7bfe390f30567403c3c71bd9b9f5"
+      "sha": "c22f281f5d10922f530c9e0ff0477e36a4abe9f3"
     },
     "xpui-backends": {
       "files": {
-        "README.md": "79c38d3975431a5e786f01576e3d2aafd47af213",
-        "docs/choosing-a-backend.md": "27ccb1f5d846533e43f222a2394e18a231d304dc",
+        "README.md": "5856d8388c1a0a3bd1e1015888e9006afb2de637",
+        "docs/choosing-a-backend.md": "1a63fb35b5aace177eea61cc6377e1ae947ec427",
         "embedded_graphics/README.md": "f8315383ffbdc08af0da90431cbccb744eb3e9c9",
         "embedded_graphics/docs/hardware.md": "8dcb73556e0f2b1b96aa433d552738ec3ee757e2",
-        "embedded_graphics/docs/screenshots.md": "74ec40e8e4e0c40068036b2ffa391e1414e112e3",
-        "fui/README.md": "f1ab93605dbff2898b84261222831c4ed58633fa",
-        "fui/cpp/README.md": "f0723774b93735d8cd16d829db9b56094742d458",
-        "fui/docs/coverage.md": "d4bb66ca3d44925c32a33ab9888b85d109b0e087",
+        "embedded_graphics/docs/screenshots.md": "26b09c5ab14cd0d13c440625fd0e727ff9074667",
+        "fui/README.md": "4a17a141740ddd69fcbf9a7f2daca21f2a8b5fb7",
+        "fui/cpp/README.md": "d56d6a758d4244513f827c4186a880eec3c5fce4",
+        "fui/docs/coverage.md": "a6842b96502026e95bbda67d10108d86e8733571",
         "fui/docs/firmware.md": "2324958ad75f504f41e8529a04d10cf999fe4e99",
-        "screenshot/README.md": "d923ee77b8cd8e98d395f9e6dc8b9b92e7e98ddf"
+        "screenshot/README.md": "e59073e1282637450537008b87ecf85ca04402be"
       },
       "github": "xpui-backends",
       "pages": true,
       "pushed": true,
-      "sha": "8527aff7327191c668c1e84a0d665a0f3e27945d"
+      "sha": "5b4eb63e4bb88170099dcf4be150570f71bbcdcf"
     },
     "xpui-boards": {
       "files": {
-        "README.md": "aa72cdf9aff6678f0d4a446d9e74426f3da9d5eb",
-        "core/README.md": "101ca1112ceed7a60f0227308c1c7cddbc0a7152",
-        "docs/adding-a-board.md": "f1ddf5b313dabd5bf9609eee7e8ca83a5182f860",
-        "docs/boards.md": "a5673dc91529267522637ab8fce29478173bc5b2",
-        "pimoroni/README.md": "880bd9d6a0709ace4dc1a371f8d78523cce34af7",
+        "README.md": "6e1940ba89809be430fe002a96e7d373bfaffe08",
+        "core/README.md": "5775d3a1fc71dabd4ed20ba4379c7f1e97fe013c",
+        "docs/adding-a-board.md": "98a1f0ef9d124d8f5c920a5f9342bf40c575f87d",
+        "docs/boards.md": "476bdd969a1686ede3be0ec04254fbf86ac115db",
+        "pimoroni/README.md": "ccc4b20017dfbc2d47ef92a85dd37048d6a181e5",
         "seeed/README.md": "bfd229c481c4cbfa4d64e92f3b9f4ca2bd13759a",
         "xteink/README.md": "1ad9f3927d4862c0ae2845fc0561e4de8fe5097f"
       },
       "github": "xpui-boards",
       "pages": true,
       "pushed": true,
-      "sha": "9df4ee2a878b2e13660ea26b1993b7cddeff7067"
+      "sha": "09c3cbe93cf76dbf18a6d2e2523e4b4572c410a3"
     },
     "xpui-chrome": {
       "files": {
-        "README.md": "fef69bf3e248ba058026d7b641ef5d2ad69f962c",
-        "docs/components.md": "eaa056118db2bc88b3d60f3c5a2123544b38c98c"
+        "README.md": "334dcd15505268364a453acac895c230d77a46c4",
+        "docs/components.md": "66ed19a30027fa243a47daf771973446e457e16b"
       },
       "github": "xpui-chrome",
       "pages": true,
       "pushed": true,
-      "sha": "09bef54f7d57ae937e20e7ad07a6dc9cb0b0ce93"
+      "sha": "b6b0dc6a870ed4a25fbcf799380f2ca8add72a29"
     },
     "xpui-cpp": {
       "files": {
-        "README.md": "f873486a5c91e9476c767b170c65f3a2c314d6b3",
+        "README.md": "a6a724877f5b02de2db122343300550dda63cdb3",
         "abi/README.md": "0866ee5056f4645e559a92b19853d8ecaa3b791b",
-        "cpp_host/README.md": "568297d002862ca1aa7f9c2da6d8d298a4cb7323",
-        "docs/boundary.md": "8f8854342ac24f4480217a3b87c3fa2aede1e7df",
-        "docs/tutorial.md": "7b9ef9cf4f8d206a7cfbebf0c3c2b36f7a81042f",
-        "firmware/README.md": "1dc3329a1fe94b7308cda95afd6cad54f1955ee6"
+        "cpp_host/README.md": "a46b05d5bf7e8ae2e0513af805fe3410ac6f6c44",
+        "docs/boundary.md": "41a527af9ee2b518fd91fa61b72087295f3f98c6",
+        "docs/tutorial.md": "ecc18b93531288e36641a6eeb853e80a5fd4f475",
+        "firmware/README.md": "99731b48687c0310d2f0bfd51d5a914498ad4bda"
       },
       "github": "xpui-cpp",
       "pages": true,
       "pushed": true,
-      "sha": "ca73599f61d05b5f968849115c513c0af1be4c58"
+      "sha": "c3dacd6db08b9d4bc973c9d1591f90ce07d509aa"
     },
     "xpui-dev": {
       "files": {
-        "README.md": "11552624c19d1783134b5f9bec18ffed3ab091ae",
-        "docs/working-across-repositories.md": "4e96c927714d3f6c5db39a945fa21b2bb6fc8294"
+        "README.md": "ec3837177a2e09496ad6b2572a9458e65543d62d",
+        "docs/working-across-repositories.md": "e71237a5eda7395f827adafa6b197a86270e1f2c"
       },
       "github": "xpui-dev",
       "pages": true,
       "pushed": true,
-      "sha": "7aac02986894d2de0f7a0654b3832f4d79112d99"
+      "sha": "467fa6061ff7d3aa7832eabbdc395f04b71678f1"
     },
     "xpui-esp32": {
       "files": {
-        "README.md": "29f5cf640cf94dc33e3b146a84c8501a287a6d75",
-        "docs/hardware.md": "5743c43e13d912b2c77571a11c0c62b08868d33b",
-        "docs/tutorial.md": "1b2bd5aa408f8ae6d3ed1cb271f6c3b59c46be51"
+        "README.md": "b546b3994c93a58cd062498127cc82a8c77638c3",
+        "docs/hardware.md": "951afb8187d2a5ceaa736017cae87aa4d5f6a508",
+        "docs/tutorial.md": "bb6e3d868821ba0191d8e2edcd050652ce24185d"
       },
       "github": "xpui-esp32",
       "pages": true,
       "pushed": true,
-      "sha": "5b7668a366f7616dea74e820bdf7daee9b109042"
+      "sha": "874c2e6276957a81366b2eb41441a2433cb204c6"
     },
     "xpui-gallery": {
       "files": {
-        "README.md": "c6f83201979b49d467c195ee97a3ea0d23f8d647",
-        "docs/conformance.md": "15ce1ab4512cc2b8501976f65347a52a09579801",
+        "README.md": "d83e74a2c8dcf9de4c334529632d44f502d425f0",
+        "docs/conformance.md": "37729f8715a7133e9dbbe52ac49376f3e36b061d",
         "gallery/README.md": "58fcad7fefaef70ace50f83927574feba9291fb7",
         "gallery/src/screens.rs": "71dd267cb8a59fcd09efab26eb808292b248c3d6",
         "gallery/tests/screenshots/controls_x3.png": "2ef6abadaaf64d36c0dfbc3001a35a16e0147c89",
@@ -212,28 +212,28 @@
       "github": "xpui-gallery",
       "pages": true,
       "pushed": true,
-      "sha": "4a4774c7a47ee441a5ddb1e22b7d1cff48bfcead"
+      "sha": "b1732966bd087a63c1aad930da8fbf987c784982"
     },
     "xpui-rp2040": {
       "files": {
-        "README.md": "3fcf459de7be1f0463ef9c8efe1e5dac63f29755",
-        "docs/hardware.md": "710121cc770ce72b81a000b6cf235dd5a84c3e27",
-        "docs/tutorial.md": "e17f2a9d75eed89101625468c477c2e77ef59294"
+        "README.md": "898e133c79b8c1ff4bc1684886d8f85facb45cd4",
+        "docs/hardware.md": "78a15bf8bfb967ff254d528c9f41cce499e9d24f",
+        "docs/tutorial.md": "3e77ced84232256ff18d8885410f7202a65f1a63"
       },
       "github": "xpui-rp2040",
       "pages": true,
       "pushed": true,
-      "sha": "dbb4913b85a5ae82b0085bd7e10fbc2b1b4921a6"
+      "sha": "875e804ccd9b4fc6de65babe2948562420e6a549"
     },
     "xpui-simulator": {
       "files": {
-        "README.md": "d5fca2219a5e52ef5eb3e85449622746bd9952ca",
-        "docs/running.md": "f5d435fa99f2ed9fe8e66480ea2ba775667c6a6f"
+        "README.md": "3b5a15966489cb4664b5308a88ca48ccb7cea4f3",
+        "docs/running.md": "4376a356d61491ea3b446538c0e3cdd590d0ba09"
       },
       "github": "xpui-simulator",
       "pages": true,
       "pushed": true,
-      "sha": "e9f3bd80bd640cbb4b743be92019b455b50812bf"
+      "sha": "8dd8a4066fce4677191ce2dfd6a7cd63cdf3f283"
     }
   },
   "schema": 1

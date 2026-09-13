@@ -28,7 +28,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md",
+        "!docs/contributing.md", "!docs/README.md",
         "!docs/design.md"
       ]
     },
@@ -38,7 +38,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md",
+        "!docs/contributing.md", "!docs/README.md",
         "!docs/design.md"
       ]
     },
@@ -48,7 +48,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md",
+        "!docs/contributing.md", "!docs/README.md",
         "*/README.md",
         "!docs/design.md"
       ]
@@ -59,7 +59,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md",
+        "!docs/contributing.md", "!docs/README.md",
         "*/README.md",
         "*/docs/*.md",
         "fui/cpp/README.md",
@@ -73,7 +73,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md",
+        "!docs/contributing.md", "!docs/README.md",
         "!docs/design.md"
       ]
     },
@@ -83,7 +83,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md",
+        "!docs/contributing.md", "!docs/README.md",
         "*/README.md",
         "gallery/src/screens.rs",
         "gallery/tests/screenshots/menu_x3.png",
@@ -97,7 +97,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md"
+        "!docs/contributing.md", "!docs/README.md"
       ]
     },
     {
@@ -106,7 +106,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md"
+        "!docs/contributing.md", "!docs/README.md"
       ]
     },
     {
@@ -115,7 +115,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md",
+        "!docs/contributing.md", "!docs/README.md",
         "*/README.md"
       ]
     },
@@ -125,7 +125,7 @@
       "files": [
         "README.md",
         "docs/*.md",
-        "!docs/contributing.md"
+        "!docs/contributing.md", "!docs/README.md"
       ]
     }
   ]
