@@ -218,12 +218,12 @@
       "files": {
         "README.md": "898e133c79b8c1ff4bc1684886d8f85facb45cd4",
         "docs/hardware.md": "78a15bf8bfb967ff254d528c9f41cce499e9d24f",
-        "docs/tutorial.md": "3e77ced84232256ff18d8885410f7202a65f1a63"
+        "docs/tutorial.md": "be9f66e25cbcec62da19f9ef2b001cac808fec7b"
       },
       "github": "xpui-rp2040",
       "pages": true,
       "pushed": true,
-      "sha": "875e804ccd9b4fc6de65babe2948562420e6a549"
+      "sha": "f8399172abd3e27e008641f6b6dd9091a75a4405"
     },
     "xpui-simulator": {
       "files": {
