@@ -82,9 +82,6 @@ curl -sI https://www.xpui.rs | grep -i '^location'              # redirects to t
 dig +short MX xpui.rs                                           # still iCloud
 ```
 
-The first line is also `30-publishing.md` §0's own check, the one that gates making the
-repositories public.
-
 ### 8. Afterwards, if you want Cloudflare's analytics
 
 Cloudflare counts only what it proxies. Once the certificate is issued and HTTPS is enforced:
