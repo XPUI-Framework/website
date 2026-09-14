@@ -1,6 +1,6 @@
 # XPUI
 
-A declarative UI framework for e-ink screens, in Rust. A screen is written once against `xpui`'s traits and runs on any backend — a C++ firmware drawing through FreeInkUI, a bare-metal Rust firmware drawing through `embedded-graphics`, or a window on a laptop. The framework has no dependencies, runs `no_std` on bare metal, and names no product, device or backend; everything else depends inward on it.
+A declarative UI framework for e-Paper screens, in [Rust](https://rust-lang.org/). A screen is written once against `xpui`'s traits and runs on any backend — a C++ firmware drawing through [FreeInkUI](https://github.com/Free-Ink/freeink-sdk/tree/main/libs/ui/FreeInkUI) by [FreeInk](https://freeink.org/), a bare-metal Rust firmware drawing through `embedded-graphics`, or a window on a laptop. The framework has no dependencies, runs `no_std` on bare metal, and names no product, device or backend; everything else depends inward on it.
 
 ## Repositories
 

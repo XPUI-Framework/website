@@ -3,7 +3,6 @@ import { join } from 'node:path';
 
 export interface Site {
   home: Home;
-  docs: { title: string; lede: string };
 }
 
 export interface Home {

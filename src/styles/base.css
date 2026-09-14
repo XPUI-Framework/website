@@ -1,57 +1,64 @@
-*, *::before, *::after { box-sizing: border-box; }
+/*
+ * In the site layer: with Starlight installed, Astro scopes component styles with :where(), which adds
+ * no weight, so an unlayered `a { … }` here would tie with a component's own `a { … }` and win by coming
+ * later. Inside a layer, every component's own rule wins again.
+ */
+@layer site {
+  *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--paper);
-  color: var(--ink);
-  font: 1rem/1.6 var(--font-prose);
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    color: var(--ink);
+    font: 1rem/1.6 var(--font-prose);
+  }
+
+  main { flex: 1; }
+
+  h1, h2, h3, h4 { font-family: var(--font-mono); line-height: 1.25; font-weight: 600; }
+
+  code, kbd, pre { font-family: var(--font-mono); font-size: 0.9em; }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--ink-faint);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    transition: text-decoration-color 120ms ease;
+  }
+
+  a:hover { text-decoration-color: var(--ink); }
+
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: var(--radius-s); }
+
+  ::selection { background: var(--ink); color: var(--paper); }
+
+  img, svg { max-width: 100%; }
+
+  .page { width: min(100% - 2 * var(--gutter), var(--page)); margin-inline: auto; }
+
+  .skip {
+    position: absolute;
+    left: var(--gutter);
+    top: -4rem;
+    padding: 0.5rem 1rem;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius-s);
+    font-family: var(--font-mono);
+  }
+
+  .skip:focus { top: 0.5rem; }
+
+  /* A <details> toggle: the whole row is the target, and the marker says whether it is open. */
+  summary { list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; margin-left: auto; font-family: var(--font-mono); }
+  details[open] > summary::after { content: '\2212'; }
 }
-
-main { flex: 1; }
-
-h1, h2, h3, h4 { font-family: var(--font-mono); line-height: 1.25; font-weight: 600; }
-
-code, kbd, pre { font-family: var(--font-mono); font-size: 0.9em; }
-
-a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--ink-faint);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-  transition: text-decoration-color 120ms ease;
-}
-
-a:hover { text-decoration-color: var(--ink); }
-
-:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: var(--radius-s); }
-
-::selection { background: var(--ink); color: var(--paper); }
-
-img, svg { max-width: 100%; }
-
-.page { width: min(100% - 2 * var(--gutter), var(--page)); margin-inline: auto; }
-
-.skip {
-  position: absolute;
-  left: var(--gutter);
-  top: -4rem;
-  padding: 0.5rem 1rem;
-  background: var(--ink);
-  color: var(--paper);
-  border-radius: var(--radius-s);
-  font-family: var(--font-mono);
-}
-
-.skip:focus { top: 0.5rem; }
-
-/* A <details> toggle: the whole row is the target, and the marker says whether it is open. */
-summary { list-style: none; }
-summary::-webkit-details-marker { display: none; }
-summary::after { content: '+'; margin-left: auto; font-family: var(--font-mono); }
-details[open] > summary::after { content: '\2212'; }

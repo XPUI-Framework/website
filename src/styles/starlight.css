@@ -1,0 +1,114 @@
+/*
+ * The Starlight pages' own rules: a synced page keeps its H1 as written, and a golden draws in the
+ * page's two tones. Colours come from tokens.css.
+ */
+
+.sl-markdown-content h1 {
+  margin-top: 1rem;
+  font-size: var(--sl-text-h1);
+  line-height: var(--sl-line-height-headings);
+  font-weight: 600;
+}
+
+.sl-markdown-content .golden {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  isolation: isolate;
+  background: var(--panel-paper);
+}
+
+.sl-markdown-content .golden img { display: block; max-width: 100%; height: auto; filter: var(--golden-filter); }
+
+.sl-markdown-content .golden-crop img { image-rendering: pixelated; }
+
+@media (resolution: 2dppx) {
+  .sl-markdown-content .golden-panel img { image-rendering: pixelated; }
+}
+
+@supports (mix-blend-mode: multiply) {
+  .sl-markdown-content .golden img { mix-blend-mode: multiply; }
+
+  .sl-markdown-content .golden::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--panel-ink);
+    mix-blend-mode: lighten;
+    pointer-events: none;
+  }
+}
+
+/* The outline is pinned to the right edge at one width; the text takes all the rest. */
+:root {
+  --xpui-toc-width: 17rem;
+}
+
+.main-pane .sl-container {
+  max-width: none;
+}
+
+@media (min-width: 72rem) {
+  [data-has-sidebar][data-has-toc] .main-pane {
+    --sl-content-margin-inline: 0;
+    width: calc(100% - var(--xpui-toc-width));
+  }
+
+  .right-sidebar-container,
+  .right-sidebar {
+    width: var(--xpui-toc-width);
+  }
+
+  .right-sidebar-panel .sl-container {
+    width: auto;
+    max-width: none;
+  }
+}
+
+/*
+ * The menu: groups set a little apart, a submenu named at the size of its links, a soft tint under the
+ * pointer, and the current page marked by a tint and a rule rather than a filled bar.
+ */
+#starlight__sidebar .top-level > li + li {
+  margin-top: 1.25rem;
+}
+
+#starlight__sidebar ul ul .large {
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+#starlight__sidebar a {
+  transition: background-color 0.15s ease;
+}
+
+#starlight__sidebar a:hover {
+  background-color: var(--tint);
+}
+
+#starlight__sidebar a[aria-current='page'],
+#starlight__sidebar a[aria-current='page']:hover {
+  color: var(--ink);
+  background-color: var(--tint-strong);
+  box-shadow: inset 2px 0 0 var(--ink);
+}
+
+/* A callout is a note beside the text, not a panel: a thin rule and a small label, no fill. */
+.sl-markdown-content .starlight-aside {
+  padding: 0.125rem 0 0.125rem 1rem;
+  border-inline-start: 2px solid var(--line);
+  background: transparent;
+}
+
+.sl-markdown-content .starlight-aside__title {
+  margin-bottom: 0.25rem;
+  font-size: var(--sl-text-sm);
+  font-weight: 600;
+}
+
+.sl-markdown-content .starlight-aside__icon {
+  width: 1rem;
+  height: 1rem;
+}

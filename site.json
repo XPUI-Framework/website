@@ -80,9 +80,5 @@
         }
       ]
     }
-  },
-  "docs": {
-    "title": "Documentation",
-    "lede": "Every page here is a repository's own, rendered as one site. Start with the tutorial; reach for the reference when you know the shape."
   }
 }

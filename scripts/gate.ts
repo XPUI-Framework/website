@@ -6,10 +6,9 @@ import { syncedContentMatches } from './checks/content.ts';
 import { followsTheStandard } from './checks/copy.ts';
 import { type Findings, SITE } from './checks/files.ts';
 import { twoTones } from './checks/palette.ts';
-import { oneScript } from './checks/scripts.ts';
 import { withinBudget } from './checks/weight.ts';
 import { internalLinksResolve } from './checks/links.ts';
-import { everyPageInTheNav } from './checks/nav.ts';
+import { everyPageInTheNav, noCrateLabels } from './checks/nav.ts';
 
 interface Stage {
   name: string;
@@ -33,8 +32,8 @@ const stages: Stage[] = [
   { name: 'unit tests', run: () => node(['--test']) },
   { name: 'build', run: () => command('astro', ['build', '--force']) },
   { name: 'every synced page is in the nav', run: everyPageInTheNav },
+  { name: 'no menu label is a crate name', run: noCrateLabels },
   { name: 'internal links resolve', needsBuild: true, run: internalLinksResolve },
-  { name: 'one script, the site\'s', needsBuild: true, run: oneScript },
   { name: 'pages within budget', needsBuild: true, run: withinBudget },
   { name: 'two tones', run: twoTones },
   { name: 'site copy follows the standard', needsBuild: true, run: followsTheStandard },
