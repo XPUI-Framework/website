@@ -8,10 +8,10 @@ A declarative UI framework for e-Paper screens, in [Rust](https://rust-lang.org/
 |---|---|
 | [`xpui`](https://github.com/XPUI-Framework/xpui-framework) | The framework itself, and the orientation for the project |
 | [`chrome`](https://github.com/XPUI-Framework/xpui-chrome) | The eight themed components a backend paints, from drawing primitives alone |
-| [`boards`](https://github.com/XPUI-Framework/xpui-boards) | Seven devices as data: panel size, key row, and the body in tenths of a millimetre |
+| [`boards`](https://github.com/XPUI-Framework/xpui-boards) | Eight devices as data: panel size, key row, and the body in tenths of a millimetre |
 | [`backends`](https://github.com/XPUI-Framework/xpui-backends) | Two backends: `embedded-graphics`, and FreeInkUI over a C ABI |
 | [`simulator`](https://github.com/XPUI-Framework/xpui-simulator) | An `xpui` app in a desktop window, on any board's panel |
-| [`gallery`](https://github.com/XPUI-Framework/xpui-gallery) | The reference application, and the seven-board conformance suite it doubles as |
+| [`gallery`](https://github.com/XPUI-Framework/xpui-gallery) | The reference application, and the eight-board conformance suite it doubles as |
 | [`rp2040`](https://github.com/XPUI-Framework/xpui-rp2040) | The gallery as firmware, run on the Pimoroni Badger 2040 and Tufty 2040 |
 | [`esp32`](https://github.com/XPUI-Framework/xpui-esp32) | The gallery as firmware for the Xteink X3 and the Seeed Sticky — both images build; no panel driver yet |
 | [`cpp`](https://github.com/XPUI-Framework/xpui-cpp) | Hosting `xpui` screens inside a C++ firmware, over a stable C ABI |

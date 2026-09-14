@@ -1,8 +1,8 @@
 {
   "home": {
     "hero": {
-      "headline": "Declarative UI for e-ink, in Rust.",
-      "lede": "Small, `no_std`, dependency-free. You write the screen; the framework handles layout, focus, input and the redraw.",
+      "headline": "Declarative UI for e-Paper, in Rust.",
+      "lede": "Small, `no_std`, dependency-free. You write the screen, the framework handles layout, focus, input and the redraw.",
       "screen": "gallery/tests/screenshots/menu_x3.png",
       "alt": "The gallery's menu on an Xteink X3"
     },
