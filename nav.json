@@ -15,12 +15,40 @@
     {
       "label": "The framework",
       "pages": [
-        "xpui/docs/reference.md",
         "xpui/docs/architecture.md",
         "xpui/docs/host.md",
         "xpui/docs/writing-a-backend.md",
         "xpui/docs/writing-a-widget.md",
         "xpui/docs/testing.md"
+      ]
+    },
+    {
+      "label": "Reference",
+      "pages": [
+        {
+          "page": "xpui/docs/reference.md",
+          "label": "All topics"
+        },
+        "xpui/docs/reference/screens.md",
+        "xpui/docs/reference/app.md",
+        "xpui/docs/reference/navigation.md",
+        "xpui/docs/reference/views.md",
+        "xpui/docs/reference/layout.md",
+        "xpui/docs/reference/modifiers.md",
+        "xpui/docs/reference/text-and-images.md",
+        "xpui/docs/reference/controls.md",
+        "xpui/docs/reference/toggles.md",
+        "xpui/docs/reference/lists.md",
+        "xpui/docs/reference/dialogs.md",
+        "xpui/docs/reference/indicators.md",
+        "xpui/docs/reference/input.md",
+        "xpui/docs/reference/interactions.md",
+        "xpui/docs/reference/theme.md",
+        "xpui/docs/reference/geometry.md",
+        "xpui/docs/reference/backend-contract.md",
+        "xpui/docs/reference/canvas-and-chrome.md",
+        "xpui/docs/reference/testing.md",
+        "xpui/docs/reference/recording.md"
       ]
     },
     {
@@ -30,7 +58,14 @@
           "page": "xpui-chrome/README.md",
           "label": "Overview"
         },
-        "xpui-chrome/docs/components.md"
+        {
+          "page": "xpui-chrome/docs/reference.md",
+          "label": "Reference"
+        },
+        "xpui-chrome/docs/reference/plain-chrome.md",
+        "xpui-chrome/docs/reference/painting.md",
+        "xpui-chrome/docs/reference/metrics-and-labels.md",
+        "xpui-chrome/docs/reference/icons.md"
       ]
     },
     {
@@ -57,7 +92,14 @@
         {
           "page": "xpui-boards/xteink/README.md",
           "label": "xpui-boards-xteink"
-        }
+        },
+        {
+          "page": "xpui-boards/docs/reference.md",
+          "label": "Reference"
+        },
+        "xpui-boards/docs/reference/boards.md",
+        "xpui-boards/docs/reference/bezel.md",
+        "xpui-boards/docs/reference/vendors.md"
       ]
     },
     {
@@ -78,12 +120,18 @@
           "label": "xpui-embedded-graphics"
         },
         {
-          "page": "xpui-backends/embedded_graphics/docs/hardware.md",
-          "label": "Hardware notes"
+          "page": "xpui-backends/embedded_graphics/docs/reference.md",
+          "label": "Reference"
+        },
+        "xpui-backends/embedded_graphics/docs/reference/backend.md",
+        "xpui-backends/embedded_graphics/docs/reference/fonts.md",
+        {
+          "page": "xpui-backends/screenshot/README.md",
+          "label": "xpui-screenshot"
         },
         {
-          "page": "xpui-backends/embedded_graphics/docs/screenshots.md",
-          "label": "Screenshot tests"
+          "page": "xpui-backends/screenshot/docs/reference.md",
+          "label": "xpui-screenshot reference"
         }
       ]
     },
@@ -95,26 +143,16 @@
           "label": "xpui-fui"
         },
         {
-          "page": "xpui-backends/fui/cpp/README.md",
-          "label": "The FreeInkUI shim"
-        },
-        {
           "page": "xpui-backends/fui/docs/firmware.md",
           "label": "Adding the shim"
         },
         {
-          "page": "xpui-backends/fui/docs/coverage.md",
-          "label": "FreeInkUI coverage"
-        }
-      ]
-    },
-    {
-      "label": "Proving a backend",
-      "pages": [
-        {
-          "page": "xpui-backends/screenshot/README.md",
-          "label": "xpui-screenshot"
-        }
+          "page": "xpui-backends/fui/docs/reference.md",
+          "label": "Reference"
+        },
+        "xpui-backends/fui/docs/reference/backend.md",
+        "xpui-backends/fui/docs/reference/lifecycle.md",
+        "xpui-backends/fui/docs/reference/raw.md"
       ]
     },
     {
@@ -124,7 +162,14 @@
           "page": "xpui-simulator/README.md",
           "label": "Overview"
         },
-        "xpui-simulator/docs/running.md"
+        "xpui-simulator/docs/running.md",
+        {
+          "page": "xpui-simulator/docs/reference.md",
+          "label": "Reference"
+        },
+        "xpui-simulator/docs/reference/simulator.md",
+        "xpui-simulator/docs/reference/panel.md",
+        "xpui-simulator/docs/reference/input.md"
       ]
     },
     {
@@ -160,6 +205,10 @@
           "label": "Working on the RP2040"
         },
         {
+          "page": "xpui-rp2040/docs/reference.md",
+          "label": "RP2040 reference"
+        },
+        {
           "page": "xpui-esp32/README.md",
           "label": "The ESP32 firmware"
         },
@@ -170,6 +219,10 @@
         {
           "page": "xpui-esp32/docs/hardware.md",
           "label": "ESP32 hardware notes"
+        },
+        {
+          "page": "xpui-esp32/docs/reference.md",
+          "label": "ESP32 reference"
         }
       ]
     },
@@ -184,11 +237,16 @@
           "page": "xpui-cpp/docs/tutorial.md",
           "label": "Rust screens in a C++ firmware"
         },
-        "xpui-cpp/docs/boundary.md",
         {
           "page": "xpui-cpp/firmware/README.md",
           "label": "The PlatformIO firmware"
-        }
+        },
+        {
+          "page": "xpui-cpp/docs/reference.md",
+          "label": "Reference"
+        },
+        "xpui-cpp/docs/reference/host.md",
+        "xpui-cpp/docs/reference/abi.md"
       ]
     }
   ]

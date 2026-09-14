@@ -28,6 +28,7 @@
       "files": [
         "README.md",
         "docs/*.md",
+        "docs/reference/*.md",
         "!docs/contributing.md", "!docs/README.md",
         "!docs/design.md"
       ]
@@ -38,8 +39,10 @@
       "files": [
         "README.md",
         "docs/*.md",
+        "docs/reference/*.md",
         "!docs/contributing.md", "!docs/README.md",
-        "!docs/design.md"
+        "!docs/design.md",
+        "!docs/components.md"
       ]
     },
     {
@@ -48,6 +51,7 @@
       "files": [
         "README.md",
         "docs/*.md",
+        "docs/reference/*.md",
         "!docs/contributing.md", "!docs/README.md",
         "*/README.md",
         "!docs/design.md"
@@ -62,9 +66,12 @@
         "!docs/contributing.md", "!docs/README.md",
         "*/README.md",
         "*/docs/*.md",
-        "fui/cpp/README.md",
+        "*/docs/reference/*.md",
         "!abi-check/README.md",
-        "!*/docs/design.md"
+        "!*/docs/design.md",
+        "!embedded_graphics/docs/hardware.md",
+        "!embedded_graphics/docs/screenshots.md",
+        "!fui/docs/coverage.md"
       ]
     },
     {
@@ -73,6 +80,8 @@
       "files": [
         "README.md",
         "docs/*.md",
+        "docs/reference/*.md",
+        "tests/screenshots/reference/*.png",
         "!docs/contributing.md", "!docs/README.md",
         "!docs/design.md"
       ]
@@ -86,8 +95,9 @@
         "!docs/contributing.md", "!docs/README.md",
         "*/README.md",
         "gallery/src/screens.rs",
-        "gallery/tests/screenshots/menu_x3.png",
+        "gallery/tests/screenshots/menu_*.png",
         "gallery/tests/screenshots/controls_x3.png",
+        "gallery/tests/screenshots/reference/*.png",
         "!docs/design.md",
         "!docs/conformance.md"
       ]
@@ -118,7 +128,9 @@
         "docs/*.md",
         "!docs/contributing.md", "!docs/README.md",
         "*/README.md",
-        "!abi/README.md", "!cpp_host/README.md"
+        "docs/reference/*.md",
+        "!abi/README.md", "!cpp_host/README.md",
+        "!docs/boundary.md"
       ]
     }
   ]

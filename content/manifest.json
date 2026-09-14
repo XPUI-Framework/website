@@ -36,12 +36,6 @@
         "xpui/docs/architecture.md"
       ]
     },
-    "8934e04f4b6a1aae": {
-      "blob": "c01db2d3f40de599fe3fee81f4d1a8b63760c16e",
-      "from": [
-        "xpui-cpp/docs/boundary.md"
-      ]
-    },
     "9b0da6a4b51f7228": {
       "blob": "f784c9c1daeef4ce262678dd07c6367eefd93ecd",
       "from": [
@@ -101,11 +95,31 @@
       "files": {
         "README.md": "f2b4d77bca403fb6fbfbf3d30bc042d655a30fe8",
         "docs/a-second-screen.md": "f512897859bad453e2b9e403e54d28da2fc7cd1d",
-        "docs/architecture.md": "78bdfe153d1863c55e5665f4298e23464c47389b",
+        "docs/architecture.md": "0d4481a67a497dcd7562e05efa16c3374de3de57",
         "docs/host.md": "39a46f43a4a5c63f0f70ea957d10a9d77b043b61",
-        "docs/orientation.md": "9d68db776bc5ff8dfd4dd7757ab4d57e51c550f8",
-        "docs/reference.md": "50f1a9ade18d3579f2728a684432dfd60e1793f5",
-        "docs/testing.md": "2efe4b936bc01e5db37a8e0a0ee5c410709e55a8",
+        "docs/orientation.md": "0298ebd38af5f669f409a70c1a9284520d0ac9b4",
+        "docs/reference.md": "1485ff7e1586e376931c1daeb83e995b9781fe79",
+        "docs/reference/app.md": "958636f2f6b8108522ac1f18ccd66a21d2fd7596",
+        "docs/reference/backend-contract.md": "7d3b46251e5ef401ac2169023bce172961bb45a9",
+        "docs/reference/canvas-and-chrome.md": "49e936694a293ce6584a99113acda46694e2b823",
+        "docs/reference/controls.md": "ca806f9c972144c0036e7606690e8424c9952471",
+        "docs/reference/dialogs.md": "db04c1a478b7cc656187d413903f1706131e5a60",
+        "docs/reference/geometry.md": "4ca53a247e5ef4d56d2fe06876eb783f44e39057",
+        "docs/reference/indicators.md": "8e6160d91956fa31a56744c025eceda63d68cf67",
+        "docs/reference/input.md": "6e4f2b909b299422cc321467ca2ad4cd82a773f7",
+        "docs/reference/interactions.md": "719a2e4ee109b9b678ba0dfa9367eaefadd267e0",
+        "docs/reference/layout.md": "9a930c344754c339d1f1b2552b47ca3adbbcd4f4",
+        "docs/reference/lists.md": "a94b57c228e369e6a51c800eaac160f69ac0b644",
+        "docs/reference/modifiers.md": "006d4e3fb03385d9046def697fbaf5ba81c4ca71",
+        "docs/reference/navigation.md": "ed640b7ec4da8e366c290dea0763439b0a66f3a2",
+        "docs/reference/recording.md": "942cf6377b1585ea5e6812c960435a665007d03e",
+        "docs/reference/screens.md": "e216e75a86f7850229e5ff408cdeb99d1b42e64e",
+        "docs/reference/testing.md": "a050882ed64c46be017bbe5c524d0f84e93ede8a",
+        "docs/reference/text-and-images.md": "58a15162e57950f96e6f5be46ee45273c3f47064",
+        "docs/reference/theme.md": "d04a9bfd118f1f2174108cd0ed5bd3e618234fa8",
+        "docs/reference/toggles.md": "6f9ca3096825fdc453dbfe383ec2d63afca14fee",
+        "docs/reference/views.md": "9204c13ae7b9fa03901e536a1128c1ce35ea2f4e",
+        "docs/testing.md": "fa220a560ab5c8b8b41666f024b4c5981bbbab1c",
         "docs/tutorial.md": "65df147c62adc54ed0928473cea3a95d7a56c4a0",
         "docs/writing-a-backend.md": "974764845087ca7463b7049780182083571f39dd",
         "docs/writing-a-widget.md": "95cfe5c48ba5da76fdce2120f4f24c180f9997ab"
@@ -113,32 +127,40 @@
       "github": "xpui-framework",
       "pages": true,
       "pushed": true,
-      "sha": "c22f281f5d10922f530c9e0ff0477e36a4abe9f3"
+      "sha": "d86a9b00fa38392eb62e96d22ff235e3c9168cec"
     },
     "xpui-backends": {
       "files": {
         "README.md": "5856d8388c1a0a3bd1e1015888e9006afb2de637",
         "docs/choosing-a-backend.md": "1a63fb35b5aace177eea61cc6377e1ae947ec427",
-        "embedded_graphics/README.md": "f8315383ffbdc08af0da90431cbccb744eb3e9c9",
-        "embedded_graphics/docs/hardware.md": "8dcb73556e0f2b1b96aa433d552738ec3ee757e2",
-        "embedded_graphics/docs/screenshots.md": "26b09c5ab14cd0d13c440625fd0e727ff9074667",
-        "fui/README.md": "4a17a141740ddd69fcbf9a7f2daca21f2a8b5fb7",
-        "fui/cpp/README.md": "d56d6a758d4244513f827c4186a880eec3c5fce4",
-        "fui/docs/coverage.md": "a6842b96502026e95bbda67d10108d86e8733571",
-        "fui/docs/firmware.md": "2324958ad75f504f41e8529a04d10cf999fe4e99",
-        "screenshot/README.md": "e59073e1282637450537008b87ecf85ca04402be"
+        "embedded_graphics/README.md": "6d858640642e880b1a9480a51e977a643a4e5ead",
+        "embedded_graphics/docs/reference.md": "905d6818ae83cc783b627f8ca26b1ebf9b8a37c6",
+        "embedded_graphics/docs/reference/backend.md": "6123f044f67c8966f5ede4c749cc9a65ac6e780f",
+        "embedded_graphics/docs/reference/fonts.md": "71edd77ea55d4c00a69667a3aa746d9ca1425fb5",
+        "fui/README.md": "e6806196db7892c2421e6c15c4f8c3bdc820d688",
+        "fui/docs/firmware.md": "ed107eec187c3b17e572efe68ad2c119748742e3",
+        "fui/docs/reference.md": "b26d9d243f23c06215dc745f5fd50f5948b6e426",
+        "fui/docs/reference/backend.md": "37cffb498500f5b8d8ea499a53a6b9136a8fe198",
+        "fui/docs/reference/lifecycle.md": "8fe06a4ed1c1ca3be9802a12ba6d9d1b165a51a3",
+        "fui/docs/reference/raw.md": "80bb55fef96718f085682fd0f180907847516df3",
+        "screenshot/README.md": "853455992d871ea4f23444c4cf65d4151602bb62",
+        "screenshot/docs/reference.md": "288dea1e305dcec30ae12f709e74b6a0223e4134"
       },
       "github": "xpui-backends",
       "pages": true,
       "pushed": true,
-      "sha": "5b4eb63e4bb88170099dcf4be150570f71bbcdcf"
+      "sha": "9f9537ecb10609f3f0478d39395e9330996bb0cf"
     },
     "xpui-boards": {
       "files": {
         "README.md": "6e1940ba89809be430fe002a96e7d373bfaffe08",
         "core/README.md": "5775d3a1fc71dabd4ed20ba4379c7f1e97fe013c",
         "docs/adding-a-board.md": "98a1f0ef9d124d8f5c920a5f9342bf40c575f87d",
-        "docs/boards.md": "476bdd969a1686ede3be0ec04254fbf86ac115db",
+        "docs/boards.md": "311e4082c6d2c1f7887cba5fe3ae97e5ed8e1662",
+        "docs/reference.md": "6f37834666fb2f18a58007be1aec08694354651c",
+        "docs/reference/bezel.md": "24098b77519ee610853e86c6a0ed6c01a893cee1",
+        "docs/reference/boards.md": "8308290d2f69ed20f156de09b398e3a907cb782d",
+        "docs/reference/vendors.md": "4a0a0b3fdb7bf6d3dd0adc23f9f3e3f3dd50ecdb",
         "pimoroni/README.md": "ccc4b20017dfbc2d47ef92a85dd37048d6a181e5",
         "seeed/README.md": "bfd229c481c4cbfa4d64e92f3b9f4ca2bd13759a",
         "xteink/README.md": "1ad9f3927d4862c0ae2845fc0561e4de8fe5097f"
@@ -146,40 +168,47 @@
       "github": "xpui-boards",
       "pages": true,
       "pushed": true,
-      "sha": "09c3cbe93cf76dbf18a6d2e2523e4b4572c410a3"
+      "sha": "b2632297b8c9bec64caa9066a90f19849316f86a"
     },
     "xpui-chrome": {
       "files": {
-        "README.md": "334dcd15505268364a453acac895c230d77a46c4",
-        "docs/components.md": "66ed19a30027fa243a47daf771973446e457e16b"
+        "README.md": "ad8e5cbc532a0edaa8cac11ba7858681c75e0485",
+        "docs/reference.md": "cd1aece0faca1af3e7ac7bc99da98383651255c9",
+        "docs/reference/icons.md": "dc21f0cbfc169d03e0fea9eb2dae5b84c27362d8",
+        "docs/reference/metrics-and-labels.md": "8dcdad30c53cb35c91238e08547f066c01802db5",
+        "docs/reference/painting.md": "c8f276f256848c8c2aae4fb7781878d0de0ff955",
+        "docs/reference/plain-chrome.md": "fb7580a53a24ba30c2debc5fed264271201adae5"
       },
       "github": "xpui-chrome",
       "pages": true,
       "pushed": true,
-      "sha": "b6b0dc6a870ed4a25fbcf799380f2ca8add72a29"
+      "sha": "c01a86af38629b3ee1af1d16fe7d89432f768adf"
     },
     "xpui-cpp": {
       "files": {
         "README.md": "a6a724877f5b02de2db122343300550dda63cdb3",
-        "docs/boundary.md": "41a527af9ee2b518fd91fa61b72087295f3f98c6",
-        "docs/tutorial.md": "ecc18b93531288e36641a6eeb853e80a5fd4f475",
+        "docs/reference.md": "1b9e8faa2cf063472b45c69f4a5b04a785e4bda4",
+        "docs/reference/abi.md": "4e60d61eccce7932fb49d748125420169e9ab491",
+        "docs/reference/host.md": "bf3cd589a8ba80fc420d5de79cdbe504ffb20d11",
+        "docs/tutorial.md": "fdd383b922fa277a9911925e4540bcb981da2264",
         "firmware/README.md": "99731b48687c0310d2f0bfd51d5a914498ad4bda"
       },
       "github": "xpui-cpp",
       "pages": true,
       "pushed": true,
-      "sha": "c3dacd6db08b9d4bc973c9d1591f90ce07d509aa"
+      "sha": "9379367dc7a83557ab0e6badfc5c903ca9cc9e06"
     },
     "xpui-esp32": {
       "files": {
         "README.md": "b546b3994c93a58cd062498127cc82a8c77638c3",
-        "docs/hardware.md": "951afb8187d2a5ceaa736017cae87aa4d5f6a508",
+        "docs/hardware.md": "8f132e03ea21e1f278d32a1025f4277909736cfa",
+        "docs/reference.md": "88916b62cd77e42021201bd8f81d36f771890b29",
         "docs/tutorial.md": "bb6e3d868821ba0191d8e2edcd050652ce24185d"
       },
       "github": "xpui-esp32",
       "pages": true,
       "pushed": true,
-      "sha": "874c2e6276957a81366b2eb41441a2433cb204c6"
+      "sha": "83d2e84b15c1981c95db08ad29a6dfd1c6c0244d"
     },
     "xpui-gallery": {
       "files": {
@@ -187,34 +216,117 @@
         "gallery/README.md": "58fcad7fefaef70ace50f83927574feba9291fb7",
         "gallery/src/screens.rs": "71dd267cb8a59fcd09efab26eb808292b248c3d6",
         "gallery/tests/screenshots/controls_x3.png": "2ef6abadaaf64d36c0dfbc3001a35a16e0147c89",
+        "gallery/tests/screenshots/menu_badger2040.png": "d235876dcc60562b0d3496fdb3ab4b5ad53cfa50",
+        "gallery/tests/screenshots/menu_inkyframe.png": "a54db4c78c09cead5b80c33c1bae3d576ad26b4b",
+        "gallery/tests/screenshots/menu_sticky.png": "35d7ec4e2e6ffb450d63d8fc23ec51e02a8fb2cc",
+        "gallery/tests/screenshots/menu_tufty2040.png": "01c1c701a76627c3290aea56289053c745e4c802",
         "gallery/tests/screenshots/menu_x3.png": "085239eb1881657f8e31f18011e52622846cc901",
+        "gallery/tests/screenshots/menu_x4.png": "3cd660d47e45c4a38e4b6228b514a9a3c8f7d1cd",
+        "gallery/tests/screenshots/menu_x4pro.png": "35d7ec4e2e6ffb450d63d8fc23ec51e02a8fb2cc",
+        "gallery/tests/screenshots/reference/chrome_button_hints.png": "f7186d45508ce036131e1b7cfc9348aa61b80146",
+        "gallery/tests/screenshots/reference/chrome_button_hints_keys.png": "4f3dbfb4eede88f1e21e6c752d34ec256d29a669",
+        "gallery/tests/screenshots/reference/chrome_button_hints_open.png": "ecc33e060cdffbe21ec95e5ec4faea17570c0414",
+        "gallery/tests/screenshots/reference/chrome_header.png": "e024ec4a2580750f49eff28a4307bca801e873fc",
+        "gallery/tests/screenshots/reference/chrome_icon_sizes.png": "5783fefb194be3e0df679d5e1eec2b9298c2bb1e",
+        "gallery/tests/screenshots/reference/chrome_icons.png": "0ac6851c3dd472e2e8da4df509c03f922c462097",
+        "gallery/tests/screenshots/reference/chrome_list.png": "a46aedea952c767b7b84dbba76e54750c5dbf475",
+        "gallery/tests/screenshots/reference/chrome_list_fit.png": "624ed326db894e849bfc7f1fd570ecee9785fb6b",
+        "gallery/tests/screenshots/reference/chrome_list_subtitle.png": "55b16956803e0945dd3071dfa48b5a691f5239ef",
+        "gallery/tests/screenshots/reference/chrome_option_popup.png": "d5f2ba20f0229fcaf433de8df533b7b038cd41b8",
+        "gallery/tests/screenshots/reference/chrome_overview.png": "29f647ad6d30910f2d083f252b61f344a8c22d52",
+        "gallery/tests/screenshots/reference/chrome_popup_clamped.png": "a7b2672dc8197bbd41997d15a6baaaba839076ba",
+        "gallery/tests/screenshots/reference/chrome_progress_bar.png": "bcf02255df50c1d8d0274f55109bcc1f371d84eb",
+        "gallery/tests/screenshots/reference/chrome_scroll_indicator.png": "1d473cba1038f482f62a9393968c8847823fbe8b",
+        "gallery/tests/screenshots/reference/chrome_slider.png": "973feb52f3008e9e014a93c43c3a3808e987ae77",
+        "gallery/tests/screenshots/reference/chrome_sub_header.png": "a46cc532de4ebf17606c9b44e032163cc9b70cc0",
+        "gallery/tests/screenshots/reference/controls_icon_toggle.png": "f9928b4e3cf8c953140996a39b397030be985ce0",
+        "gallery/tests/screenshots/reference/controls_overview.png": "844ec31f801ebb26f647835dca5877ea9ff47321",
+        "gallery/tests/screenshots/reference/controls_slider.png": "34107bc5d75e49abb31fafc4d37df4933fe9f33a",
+        "gallery/tests/screenshots/reference/controls_slider_focused.png": "c2cd821f50564fa33db1efbc239e0285289c5708",
+        "gallery/tests/screenshots/reference/controls_slider_plain.png": "957d5bec588397333af7f8a266de130c6ad71022",
+        "gallery/tests/screenshots/reference/controls_stepper.png": "fd106cb3415d292c6ff2dda59854c895522cf381",
+        "gallery/tests/screenshots/reference/controls_stepper_badger.png": "f7c13370c4b0e9df9b0ce6d93cdbd22504addbd7",
+        "gallery/tests/screenshots/reference/controls_stepper_focused.png": "d9813f3286e6612d921a694c996bb968ba459a78",
+        "gallery/tests/screenshots/reference/controls_stepper_open.png": "5af27a382c75021e3cdd8ac94d983f95913ba05a",
+        "gallery/tests/screenshots/reference/controls_toggle.png": "a05d4e0289e36a897a5e5b40b6cb4504fbdb97c7",
+        "gallery/tests/screenshots/reference/controls_toggle_focused.png": "01032f29150205a83f985734a9ffcfc3fa1d54f1",
+        "gallery/tests/screenshots/reference/controls_toggle_list.png": "913df4950fa6c88bd9cf101ba520b88e35547322",
+        "gallery/tests/screenshots/reference/dialogs_confirm.png": "4f60ff5acba6a388a74eda255fd8b127ba7a66bf",
+        "gallery/tests/screenshots/reference/dialogs_new.png": "4d1164fdca5b93223e2083f3594f21a8f2a788c4",
+        "gallery/tests/screenshots/reference/dialogs_picker.png": "07afb2f48473f42064ba521adb166dde4be2a242",
+        "gallery/tests/screenshots/reference/dialogs_scrim_dim.png": "dded9326fa69a12337fe46be526e32c886c1b893",
+        "gallery/tests/screenshots/reference/dialogs_scrim_none.png": "aced614e75c0271ff49a9b04ca9818106b4700ce",
+        "gallery/tests/screenshots/reference/indicators_overview.png": "381be3603a3a1443c7d8ef610f1d69edf74ace7c",
+        "gallery/tests/screenshots/reference/indicators_progress_bar.png": "cc003168781ed329f648c7665e55b776422d8f67",
+        "gallery/tests/screenshots/reference/layout_alignment.png": "01bbde722eb9c3a096c1600a1436f0795cb43efd",
+        "gallery/tests/screenshots/reference/layout_extend.png": "206931dbfbd8a8df65162096297686457d7fef6b",
+        "gallery/tests/screenshots/reference/layout_hstack.png": "234b89e7b96fca56c3c850641c3e81131f6f4635",
+        "gallery/tests/screenshots/reference/layout_hstack_icon.png": "67c0903c0285f62378b5c44d50bf099a694b827b",
+        "gallery/tests/screenshots/reference/layout_hstack_label.png": "40a53530041cd02c3e4f7c39941b3463fd3404cb",
+        "gallery/tests/screenshots/reference/layout_hstack_spacer.png": "1645a5546959138f831b3aa89640642fa498e236",
+        "gallery/tests/screenshots/reference/layout_padding_all.png": "84c7dc12a2480a5622d799814ea6c2985e84fbdb",
+        "gallery/tests/screenshots/reference/layout_padding_symmetric.png": "3a4513a5c9077cbfc69a9fbc214aa82e8b2134fd",
+        "gallery/tests/screenshots/reference/layout_push_if.png": "87cc90fe593ea2c4ad570a2d4db966ad57ca4ae4",
+        "gallery/tests/screenshots/reference/layout_scroll_scrolled.png": "cdf3544f7608c0eab9b91cc8b8de4e0c6d3e4b4e",
+        "gallery/tests/screenshots/reference/layout_scroll_top.png": "a37f396817068b18177955e70c7def654f89688d",
+        "gallery/tests/screenshots/reference/layout_spacer.png": "6361d66fb462458a0f6eb4517280a807988aad61",
+        "gallery/tests/screenshots/reference/layout_vstack.png": "5578b2313dc404c13b856ef7061bcf1d4f3bc23f",
+        "gallery/tests/screenshots/reference/layout_vstack_footer.png": "088c1ca08584b1a8eefbc419e997c20e82eef34c",
+        "gallery/tests/screenshots/reference/lists_divider.png": "95edad86c4a663a28975b3321f7fb4eec33d25bd",
+        "gallery/tests/screenshots/reference/lists_list.png": "bc70e749434835dcc4481d128e8f2eac8a418142",
+        "gallery/tests/screenshots/reference/lists_rows.png": "3a5758458b3c8d2f768e2b93072b31a18900f503",
+        "gallery/tests/screenshots/reference/lists_section.png": "8334502fd737de51713689d23d727e3a2ca1ccd1",
+        "gallery/tests/screenshots/reference/modifiers_flexible.png": "197ebd492d673278e30fa68aa52088359729473f",
+        "gallery/tests/screenshots/reference/modifiers_frame.png": "585e82467b8020c8504d6f5d2bf7673bfef0c5c8",
+        "gallery/tests/screenshots/reference/modifiers_overview.png": "0831c7d872ba9c017a1b77ee9f7bc8888af9bfc0",
+        "gallery/tests/screenshots/reference/navigation_hints.png": "c62eccb3c908d83b1040009b975e3e48e782a4b6",
+        "gallery/tests/screenshots/reference/navigation_overlay_panel.png": "a8194bb24cca1c2a3c5021a0244d7ff2922a6dbf",
+        "gallery/tests/screenshots/reference/navigation_screen.png": "5c4238b9f8c70ee176470a5e9990ba7d6bab75cc",
+        "gallery/tests/screenshots/reference/navigation_walkthrough_detail.png": "8868370f6a8a453cc06980d7e90e8cd0a0992080",
+        "gallery/tests/screenshots/reference/navigation_walkthrough_list.png": "c34aad1ec21db99c93443fb5801f434ef220e5d2",
+        "gallery/tests/screenshots/reference/screens_overlay.png": "ab6ab05cadc81936cc79d4734be665408dd5995e",
+        "gallery/tests/screenshots/reference/screens_screen.png": "739c4208a4b6872ee4716f8be26521635618dee6",
+        "gallery/tests/screenshots/reference/text_icons.png": "bf4bab61d3b6bdd01ff8bb358f704401dbf064b9",
+        "gallery/tests/screenshots/reference/text_image.png": "a95cf653080265e8a2cbab4d01dcfdb2833b446b",
+        "gallery/tests/screenshots/reference/text_overview.png": "c71739684db1d30deb5ecab5d57d99e47f6ff37e",
+        "gallery/tests/screenshots/reference/text_roles.png": "c07ef1440dbe9ebd05678314242ca50dca8d3c90",
+        "gallery/tests/screenshots/reference/text_styles.png": "e0d457353d94b00d4539f598e149efe119174863",
+        "gallery/tests/screenshots/reference/views_battery.png": "53619abc67022bbf1670ab167f710e62611051b5",
+        "gallery/tests/screenshots/reference/views_boxed.png": "95edad86c4a663a28975b3321f7fb4eec33d25bd",
+        "gallery/tests/screenshots/reference/views_units.png": "36909ba06741cc556873d6dec04cdfcd19de98de",
         "tutorial/README.md": "61c5668e2e8180811f136054f3891b3d8bf4e0a0"
       },
       "github": "xpui-gallery",
       "pages": true,
       "pushed": true,
-      "sha": "b1732966bd087a63c1aad930da8fbf987c784982"
+      "sha": "d29e8c395338442a719a335a6cf21726d5c08dd9"
     },
     "xpui-rp2040": {
       "files": {
-        "README.md": "898e133c79b8c1ff4bc1684886d8f85facb45cd4",
-        "docs/hardware.md": "78a15bf8bfb967ff254d528c9f41cce499e9d24f",
-        "docs/tutorial.md": "be9f66e25cbcec62da19f9ef2b001cac808fec7b"
+        "README.md": "761f4ceb4a285d5c95db33102db4acd231c6dc49",
+        "docs/hardware.md": "cd6bfb1ef3f9b8dcc9d0589d38ddacb3a9d6b0e5",
+        "docs/reference.md": "e562f45c0b332c8cee13ab73b2c24a8581f436e7",
+        "docs/tutorial.md": "dd41cf04e21659b4d749808be1176ee9fd77e442"
       },
       "github": "xpui-rp2040",
       "pages": true,
       "pushed": true,
-      "sha": "f8399172abd3e27e008641f6b6dd9091a75a4405"
+      "sha": "b0383af5291bb2c71e4c96ae251773bd8c231f3b"
     },
     "xpui-simulator": {
       "files": {
         "README.md": "3b5a15966489cb4664b5308a88ca48ccb7cea4f3",
-        "docs/running.md": "4376a356d61491ea3b446538c0e3cdd590d0ba09"
+        "docs/reference.md": "631099596e40f3c06f884c5eda6db0ed9ebf6a17",
+        "docs/reference/input.md": "e9a8cd07fce9542a5f696d40c904b4c16db9b448",
+        "docs/reference/panel.md": "bfda2285a9f4ec0706fe68578334713995b4d36e",
+        "docs/reference/simulator.md": "4c50da5bd83b4f7d4d67451383d69cd5576297f3",
+        "docs/running.md": "e94897b56885557ea378b1033eb4beb31a258bf6",
+        "tests/screenshots/reference/panel_x3.png": "179a70404c77a05c12ce7c73e7e22859684dd57c"
       },
       "github": "xpui-simulator",
       "pages": true,
       "pushed": true,
-      "sha": "8dd8a4066fce4677191ce2dfd6a7cd63cdf3f283"
+      "sha": "8d04ea91b9e47730cfa57774c5af0c656aaf8395"
     }
   },
   "schema": 1
