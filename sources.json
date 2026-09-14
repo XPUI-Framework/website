@@ -15,7 +15,7 @@
       "github": "brand",
       "pages": false,
       "files": [
-        "assets/mark.svg",
+        "assets/mark.svg", "assets/mark-inverted.svg",
         "assets/favicon.svg",
         "assets/favicon.ico",
         "assets/apple-touch-icon.png",

@@ -23,7 +23,7 @@ const gallery = 'xpui-gallery';
 const item = rustItemWithin(syncedText(gallery, home.code.file), home.code.within, home.code.item);
 const source = sourceOf(gallery, home.code.file);
 
-const entries = await getCollection('docs');
+const entries = await getCollection('pages');
 const bodies = new Map(entries.map((e) => [e.id, e.body ?? '']));
 const { order } = siteNav(bodies);
 const page = (id: string) => {

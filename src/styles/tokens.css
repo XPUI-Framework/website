@@ -50,6 +50,43 @@
   --dither: repeating-conic-gradient(var(--ink) 0 25%, transparent 0 50%);
 }
 
+/*
+ * Starlight's palette, drawn from ink and paper. Unlayered, so it wins over Starlight's own in
+ * both of its themes; ink and paper already swap above, so one mapping serves both.
+ */
+:root {
+  --sl-color-white: var(--ink);
+  --sl-color-gray-1: var(--code-ink);
+  --sl-color-gray-2: var(--code-ink);
+  --sl-color-gray-3: var(--ink-soft);
+  --sl-color-gray-4: var(--ink-faint);
+  --sl-color-gray-5: var(--line);
+  --sl-color-gray-6: var(--tint);
+  --sl-color-gray-7: var(--tint);
+  --sl-color-black: var(--paper);
+  --sl-color-accent-low: var(--tint-strong);
+  --sl-color-accent: var(--ink);
+  --sl-color-accent-high: var(--ink);
+  --sl-color-text-invert: var(--paper);
+  --sl-color-bg-nav: var(--paper);
+  --sl-color-bg-sidebar: var(--paper);
+  --sl-color-bg-inline-code: var(--tint-strong);
+  --sl-color-hairline-light: var(--line);
+  --sl-color-hairline: var(--line);
+  --sl-color-hairline-shade: var(--line);
+  --sl-color-backdrop-overlay: color-mix(in srgb, var(--ink) 40%, transparent);
+  --sl-color-orange-low: var(--tint); --sl-color-orange: var(--ink); --sl-color-orange-high: var(--ink);
+  --sl-color-green-low: var(--tint); --sl-color-green: var(--ink); --sl-color-green-high: var(--ink);
+  --sl-color-blue-low: var(--tint); --sl-color-blue: var(--ink); --sl-color-blue-high: var(--ink);
+  --sl-color-purple-low: var(--tint); --sl-color-purple: var(--ink); --sl-color-purple-high: var(--ink);
+  --sl-color-red-low: var(--tint); --sl-color-red: var(--ink); --sl-color-red-high: var(--ink);
+  --sl-shadow-sm: none;
+  --sl-shadow-md: none;
+  --sl-shadow-lg: none;
+  --sl-font: var(--font-prose);
+  --sl-font-mono: var(--font-mono);
+}
+
 .inverted {
   --ink: var(--tone-paper);
   --paper: var(--tone-ink);
@@ -85,3 +122,10 @@
 :root[data-theme='dark'] .inverted { color-scheme: light; }
 
 :root[data-theme='dark'] :is(.astro-code, .astro-code span) { color: var(--shiki-dark); }
+
+/* The copy button stays in sight, a tint of the code's ink rather than hidden until the pointer is over the block. */
+@media (hover: hover) {
+  .sl-markdown-content .expressive-code .copy button:not(:hover) {
+    opacity: 0.75;
+  }
+}

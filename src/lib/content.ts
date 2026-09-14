@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { CONTENT_DIR, readManifest } from './manifest.ts';
+import { type IndexEntry, indexEntries } from './reference-index.ts';
 
 const ORG = 'https://github.com/XPUI-Framework';
 
@@ -10,6 +11,12 @@ export function syncedBytes(dir: string, path: string): Buffer {
 
 export function syncedText(dir: string, path: string): string {
   return syncedBytes(dir, path).toString('utf8');
+}
+
+/** The pages a synced reference index links, as page ids: `xpui/docs/reference/lists.md`. */
+export function syncedIndex(id: string): IndexEntry[] {
+  const [dir, ...rest] = id.split('/');
+  return indexEntries(id, syncedText(dir, rest.join('/')));
 }
 
 /**

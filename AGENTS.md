@@ -14,7 +14,7 @@ repository, never to `content/`. The brand files come from `brand` the same way.
 ```
 
 ```text
-synced content matches the manifest · types · unit tests · build · every synced page is in the nav · internal links resolve · one script, the site's · pages within budget · two tones · site copy follows the standard · the gate is documented
+synced content matches the manifest · types · unit tests · build · every synced page is in the nav · no menu label is a crate name · internal links resolve · pages within budget · two tones · site copy follows the standard · the gate is documented
 ```
 
 CI runs the same command and deploys the `dist/` it built. What each stage proves, and how to
