@@ -55,3 +55,38 @@
   height: auto;
   margin-inline: auto;
 }
+
+/*
+ * A golden in a synced page: frameless, in the page's two tones. The build sets its width and
+ * height, a whole panel at half a CSS pixel per panel pixel and a crop at two. Black becomes ink
+ * and white paper the way `Device.astro` does it; the dark theme inverts the golden first.
+ */
+.prose .golden {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  isolation: isolate;
+  background: var(--panel-paper);
+}
+
+.prose .golden img { display: block; max-width: 100%; height: auto; filter: var(--golden-filter); }
+
+.prose .golden-crop img { image-rendering: pixelated; }
+
+@media (resolution: 2dppx) {
+  .prose .golden-panel img { image-rendering: pixelated; }
+}
+
+@supports (mix-blend-mode: multiply) {
+  .prose .golden img { mix-blend-mode: multiply; }
+
+  .prose .golden::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--panel-ink);
+    mix-blend-mode: lighten;
+    pointer-events: none;
+  }
+}

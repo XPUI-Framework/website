@@ -9,3 +9,11 @@ test('each table row is a repository and its description', () => {
     { github: 'xpui-dev', description: 'The umbrella' },
   ]);
 });
+
+test('a row is named by its URL, whatever its label says', () => {
+  const table = '| | |\n|---|---|\n| [`chrome`](https://github.com/XPUI-Framework/xpui-chrome) | The eight themed components |\n| [xpui](https://github.com/XPUI-Framework/xpui-framework) | The framework itself |\n';
+  assert.deepEqual(repositoryRows(table), [
+    { github: 'xpui-chrome', description: 'The eight themed components' },
+    { github: 'xpui-framework', description: 'The framework itself' },
+  ]);
+});

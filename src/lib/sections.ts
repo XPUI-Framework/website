@@ -22,9 +22,9 @@ export function title(markdown: string): string {
   return heading ? plain(heading.slice(2)) : '';
 }
 
-const NOT_PROSE = /^(#|>|\||<|```|\s*[-*] |\[!\[)/;
+const NOT_PROSE = /^(#|>|\||<|```|\s*[-*] |\[!\[|!\[)/;
 
-/** The first block that is a plain paragraph: not a heading, quote, table, list, HTML, fence or badge line. */
+/** The first block that is a plain paragraph: not a heading, quote, table, list, HTML, fence, badge line or image. */
 export function firstParagraph(markdown: string): string {
   return blocks(markdown).find((block) => !NOT_PROSE.test(block)) ?? '';
 }

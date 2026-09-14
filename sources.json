@@ -88,7 +88,8 @@
         "gallery/src/screens.rs",
         "gallery/tests/screenshots/menu_x3.png",
         "gallery/tests/screenshots/controls_x3.png",
-        "!docs/design.md"
+        "!docs/design.md",
+        "!docs/conformance.md"
       ]
     },
     {
@@ -116,16 +117,8 @@
         "README.md",
         "docs/*.md",
         "!docs/contributing.md", "!docs/README.md",
-        "*/README.md"
-      ]
-    },
-    {
-      "dir": "xpui-dev",
-      "github": "xpui-dev",
-      "files": [
-        "README.md",
-        "docs/*.md",
-        "!docs/contributing.md", "!docs/README.md"
+        "*/README.md",
+        "!abi/README.md", "!cpp_host/README.md"
       ]
     }
   ]

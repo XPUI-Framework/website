@@ -40,6 +40,7 @@ commit it was read at and every file's git blob id, and for each diagram the blo
 | `extract.ts` | a Rust item cut out of a file for the home page, dedented |
 | `site.ts`, `repos.ts` | `site.json`, and the organisation profile's repository table |
 | `icons.ts`, `dividers.ts` | the pixel icons and the pixel dividers, as grids |
+| `goldens.ts` | a PNG's size from its header, and the size a page draws a golden at |
 | `llms.ts`, `glob.ts`, `warning.ts`, `assets.ts` | `llms.txt`, file patterns, the standard's warning, brand endpoints |
 
 `src/images.ts` is the one module outside `lib/` that the build depends on: it hands the synced
@@ -54,7 +55,7 @@ goldens to Vite with `import.meta.glob`, which only Vite understands.
 | `alerts` | turn `> [!WARNING]` into the `Callout` markup |
 | `rustdoc-fences` | show a `rust` fence the way rustdoc does: `# ` lines hidden, `rust,no_run` highlighted as rust |
 | `mermaid` | replace a `mermaid` fence with the SVG the sync drew for it |
-| `links` | send every link through `lib/links.ts` |
+| `links` | send every link through `lib/links.ts`, and a synced golden's raw URL to its synced copy |
 | `rehypeHeadingIds` | GitHub's heading slugs, so `#the-host-façades` means what it means on GitHub |
 | `heading-anchors` | a section heading links to itself |
 | `headless-tables` | drop the empty header row of a `| | |` table |
@@ -74,10 +75,17 @@ variables; `tokens.css` chooses which one shows.
 | `github.com/XPUI-Framework/<repo>/blob/main/…` naming a synced page | that page's URL |
 | `github.com/XPUI-Framework/<repo>`, alone | that repository's overview page |
 | any other GitHub URL | unchanged |
+| an image at `raw.githubusercontent.com/XPUI-Framework/<repo>/main/…` naming a synced file | the synced file, served by the build |
+| the same for a file that is not synced | the build stops: `… is not synced — add it to sources.json` |
 | a relative path out of the repository, or a relative image | the build stops |
 
 A relative path without a trailing slash is always sent to `blob/`; GitHub redirects a folder
 there to `tree/`.
+
+A synced image is rewritten to its path relative to the page before Astro collects the page's
+images, so Astro imports the file through Vite like any local image. `astro.config.ts` sets the
+passthrough image service, so the file is served as the bytes the sync copied, never resized or
+re-encoded.
 
 ## Why the sync, not the build, reads the sources
 

@@ -1,11 +1,13 @@
 /**
- * A page's URL is its path in the repository with the `docs/` folder and `.md` dropped:
- * `xpui/docs/tutorial.md` is `/docs/xpui/tutorial/`, and a `README.md` is its folder's page.
+ * A page's URL is its path in the repository with the last `docs/` folder and `.md` dropped:
+ * `xpui/docs/tutorial.md` is `/docs/xpui/tutorial/`, `xpui/docs/reference/lists.md` is
+ * `/docs/xpui/reference/lists/`, and a `README.md` is its folder's page.
  */
 export function routeOf(id: string): string {
   const segments = id.replace(/\.md$/, '').split('/');
   if (segments.at(-1) === 'README') segments.pop();
-  if (segments.at(-2) === 'docs') segments.splice(-2, 1);
+  const at = segments.lastIndexOf('docs');
+  if (at > 0) segments.splice(at, 1);
   return `/docs/${segments.join('/')}/`;
 }
 

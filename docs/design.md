@@ -137,6 +137,22 @@ affiliated with, endorsed by or sponsored by Xteink.
 The goldens reach the page through Vite (`src/images.ts`), which serves them the same way in
 `npm run dev` and in the build, as files, never inlined.
 
+## Screenshots in a documentation page
+
+A golden a synced page embeds (see [navigation.md](navigation.md)) is drawn without the device:
+a `span.golden` around the image, styled in `prose.css`. The build reads the PNG's own size from
+its header and sets the image's `width` and `height` from it:
+
+| The golden | Drawn at | Class |
+|---|---|---|
+| a whole panel: at least the X3's 528 × 792, either way up | half a CSS pixel per panel pixel, as on the home page; `pixelated` on a 2× screen | `golden-panel` |
+| anything smaller: a component cropped out of a panel | two CSS pixels per panel pixel, `pixelated` at every density | `golden-crop` |
+
+Its tones follow the page. The blend is the device's: the image multiplies onto `--panel-paper`
+and `--panel-ink` lightens over it, so black is drawn as ink and white as paper. In the dark
+theme `--golden-filter` inverts the golden first, so the page's ink, which is then the light
+tone, is still what the golden's black becomes.
+
 ## Diagrams
 
 A dependency graph is drawn the right way up: a `flowchart BT`, which puts the depended-upon

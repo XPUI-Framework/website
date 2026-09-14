@@ -36,12 +36,6 @@
         "xpui/docs/architecture.md"
       ]
     },
-    "7c04fff23b2d2eac": {
-      "blob": "254e45e886d40606aa71d72df45efb5d4d78cd0d",
-      "from": [
-        "xpui-dev/README.md"
-      ]
-    },
     "8934e04f4b6a1aae": {
       "blob": "c01db2d3f40de599fe3fee81f4d1a8b63760c16e",
       "from": [
@@ -167,8 +161,6 @@
     "xpui-cpp": {
       "files": {
         "README.md": "a6a724877f5b02de2db122343300550dda63cdb3",
-        "abi/README.md": "0866ee5056f4645e559a92b19853d8ecaa3b791b",
-        "cpp_host/README.md": "a46b05d5bf7e8ae2e0513af805fe3410ac6f6c44",
         "docs/boundary.md": "41a527af9ee2b518fd91fa61b72087295f3f98c6",
         "docs/tutorial.md": "ecc18b93531288e36641a6eeb853e80a5fd4f475",
         "firmware/README.md": "99731b48687c0310d2f0bfd51d5a914498ad4bda"
@@ -177,16 +169,6 @@
       "pages": true,
       "pushed": true,
       "sha": "c3dacd6db08b9d4bc973c9d1591f90ce07d509aa"
-    },
-    "xpui-dev": {
-      "files": {
-        "README.md": "ec3837177a2e09496ad6b2572a9458e65543d62d",
-        "docs/working-across-repositories.md": "e71237a5eda7395f827adafa6b197a86270e1f2c"
-      },
-      "github": "xpui-dev",
-      "pages": true,
-      "pushed": true,
-      "sha": "467fa6061ff7d3aa7832eabbdc395f04b71678f1"
     },
     "xpui-esp32": {
       "files": {
@@ -202,7 +184,6 @@
     "xpui-gallery": {
       "files": {
         "README.md": "d83e74a2c8dcf9de4c334529632d44f502d425f0",
-        "docs/conformance.md": "37729f8715a7133e9dbbe52ac49376f3e36b061d",
         "gallery/README.md": "58fcad7fefaef70ace50f83927574feba9291fb7",
         "gallery/src/screens.rs": "71dd267cb8a59fcd09efab26eb808292b248c3d6",
         "gallery/tests/screenshots/controls_x3.png": "2ef6abadaaf64d36c0dfbc3001a35a16e0147c89",

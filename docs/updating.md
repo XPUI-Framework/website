@@ -87,7 +87,7 @@ copy of a page.
 | `nav.json names pages that are not synced` | the repository removed or renamed a page | remove or rename its entry in `nav.json`, and in `site.json` if the home page names it |
 | `no id "…" on that page` | a page links to a heading that was renamed | fix the link in the repository that has it, push, sync again |
 | `no line starting with "fn body(&self)"` | the gallery's screen was restructured | point `site.json`'s `code.within` and `code.item` at what now holds it |
-| `… is not synced — add it to sources.json` | `site.json` names a golden the sync does not copy | add the file to `xpui-gallery`'s patterns in `sources.json` |
+| `… is not synced — add it to sources.json` | `site.json`, or an image in a synced page, names a golden the sync does not copy | add the file to `xpui-gallery`'s patterns in `sources.json`, pushing `xpui-gallery` first if the golden is new |
 | `diagram … still has colours` | a diagram uses a style the palette cannot hold | change the diagram in its repository, or `scripts/mermaid.json` |
 | `is not on origin/main` | a source was synced with `--unpushed` | push that repository, sync again |
 

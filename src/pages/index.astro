@@ -33,7 +33,7 @@ const page = (id: string) => {
 };
 
 const profile = { dir: '.github', path: 'profile/README.md' };
-const rows = repositoryRows(section(syncedText(profile.dir, profile.path), 'The repositories'));
+const rows = repositoryRows(section(syncedText(profile.dir, profile.path), 'Repositories'));
 const dirOf = new Map(Object.entries(readManifest().repos).map(([dir, repo]) => [repo.github, dir]));
 const repo = async (dir: string) => {
   const github = readManifest().repos[dir]?.github;

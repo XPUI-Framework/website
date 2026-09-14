@@ -49,3 +49,7 @@ test('a summary is the first sentence, not cut at a colon', () => {
   assert.equal(firstSentence('# T\n\nA small `thing`: it paints. More here.\n'), 'A small thing: it paints.');
   assert.equal(firstSentence('# T\n\nNo full stop\n'), 'No full stop');
 });
+
+test('a screenshot under the title is not the first paragraph', () => {
+  assert.equal(firstParagraph('# Lists\n\n![A list with a subtitle on each row](https://example.com/x.png)\n\nRows, sections and dividers.\n'), 'Rows, sections and dividers.');
+});

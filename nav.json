@@ -134,7 +134,6 @@
           "page": "xpui-gallery/README.md",
           "label": "Overview"
         },
-        "xpui-gallery/docs/conformance.md",
         {
           "page": "xpui-gallery/gallery/README.md",
           "label": "The screens"
@@ -187,27 +186,9 @@
         },
         "xpui-cpp/docs/boundary.md",
         {
-          "page": "xpui-cpp/abi/README.md",
-          "label": "xpui-cpp-abi"
-        },
-        {
-          "page": "xpui-cpp/cpp_host/README.md",
-          "label": "xpui-cpp-host"
-        },
-        {
           "page": "xpui-cpp/firmware/README.md",
           "label": "The PlatformIO firmware"
         }
-      ]
-    },
-    {
-      "label": "Across the repositories",
-      "pages": [
-        {
-          "page": "xpui-dev/README.md",
-          "label": "The umbrella"
-        },
-        "xpui-dev/docs/working-across-repositories.md"
       ]
     }
   ]

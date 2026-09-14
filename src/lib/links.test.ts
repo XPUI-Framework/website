@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { type LinkContext, rewrite } from './links.ts';
+import { imageSource, type LinkContext, rewrite } from './links.ts';
 
 const sha = 'a'.repeat(40);
 const ctx: LinkContext = {
@@ -10,6 +10,7 @@ const ctx: LinkContext = {
   github: 'xpui-framework',
   pages: new Set(['xpui/README.md', 'xpui/docs/host.md', 'xpui/docs/tutorial.md', 'xpui-gallery/tutorial/README.md']),
   dirs: new Map([['xpui-framework', 'xpui'], ['xpui-gallery', 'xpui-gallery']]),
+  synced: new Set(['xpui/README.md', 'xpui-gallery/gallery/tests/screenshots/menu_x3.png']),
 };
 const readme: LinkContext = { ...ctx, path: 'README.md' };
 
@@ -46,4 +47,28 @@ test('a GitHub link to something that is not a page is left pointing at main', (
 
 test('a relative link out of the repository is an error', () => {
   assert.throws(() => rewrite('../../other/x.md', ctx), /leaves the repository/);
+});
+
+const RAW = 'https://raw.githubusercontent.com/XPUI-Framework/';
+const reference: LinkContext = { ...ctx, path: 'docs/reference/lists.md' };
+
+test('a raw image in a synced repository becomes the synced file, relative to the page', () => {
+  assert.equal(imageSource(`${RAW}xpui-gallery/main/gallery/tests/screenshots/menu_x3.png`, reference), '../../../xpui-gallery/gallery/tests/screenshots/menu_x3.png');
+  const gallery: LinkContext = { ...ctx, dir: 'xpui-gallery', github: 'xpui-gallery', path: 'README.md' };
+  assert.equal(imageSource(`${RAW}xpui-gallery/main/gallery/tests/screenshots/menu_x3.png`, gallery), './gallery/tests/screenshots/menu_x3.png');
+});
+
+test('a raw image that is not synced stops the build', () => {
+  assert.throws(() => imageSource(`${RAW}xpui-gallery/main/gallery/tests/screenshots/reference/lists.png`, reference), /xpui-gallery\/gallery\/tests\/screenshots\/reference\/lists.png is not synced — add it to sources.json/);
+});
+
+test('any other absolute image is left alone', () => {
+  for (const src of [
+    'https://raw.githubusercontent.com/rust-lang/rust/main/src/doc/logo.png',
+    `${RAW}xpui-chrome/main/docs/x.png`,
+    `${RAW}xpui-gallery/v1/gallery/tests/screenshots/menu_x3.png`,
+    'https://xpui.rs/social.png',
+  ]) {
+    assert.equal(imageSource(src, reference), src);
+  }
 });

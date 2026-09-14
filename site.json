@@ -67,8 +67,7 @@
           "title": "Tools",
           "repos": [
             "xpui-simulator",
-            "xpui-gallery",
-            "xpui-dev"
+            "xpui-gallery"
           ]
         },
         {

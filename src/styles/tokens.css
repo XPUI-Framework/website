@@ -17,6 +17,8 @@
   --paper: var(--tone-paper);
   --panel-ink: #1A1A1A;
   --panel-paper: #F2F2EE;
+  /* A golden in a page is inverted in the dark theme, so its ink stays the page's ink. */
+  --golden-filter: none;
   /* Xteink's own photograph of the X3, masked; the black body on paper, the white one on ink. */
   --device-frame: url('/devices/x3-black.webp');
 
@@ -63,6 +65,7 @@
     --tone-ink: #F2F2EE;
     --tone-paper: #1A1A1A;
     --device-frame: url('/devices/x3-white.webp');
+    --golden-filter: invert(1);
     color-scheme: dark;
   }
 
@@ -75,6 +78,7 @@
   --tone-ink: #F2F2EE;
   --tone-paper: #1A1A1A;
   --device-frame: url('/devices/x3-white.webp');
+  --golden-filter: invert(1);
   color-scheme: dark;
 }
 

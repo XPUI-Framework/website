@@ -10,5 +10,8 @@ let renderer: Promise<MarkdownRenderer> | undefined;
 export async function render(markdown: string, from?: { dir: string; path: string }): Promise<string> {
   renderer ??= processor.createRenderer(shared);
   const fileURL = from ? pathToFileURL(join(process.cwd(), CONTENT_DIR, from.dir, from.path)) : undefined;
-  return (await (await renderer).render(markdown, { fileURL })).code;
+  const { code } = await (await renderer).render(markdown, { fileURL });
+  // Astro resolves an image only in a collection page; a fragment would carry the placeholder.
+  if (code.includes('__ASTRO_IMAGE_')) throw new Error('an image in a fragment has no home on the site: only a documentation page serves one');
+  return code;
 }
