@@ -199,7 +199,14 @@
           "page": "xpui-cpp/README.md",
           "label": "Overview"
         },
-        "xpui-cpp/docs/tutorial.md",
+        {
+          "label": "Tutorial",
+          "pages": [
+            "xpui-cpp/docs/tutorial.md",
+            "xpui-cpp/docs/tutorial-host.md",
+            "xpui-cpp/docs/tutorial-firmware.md"
+          ]
+        },
         {
           "page": "xpui-cpp/firmware/README.md",
           "label": "The PlatformIO firmware"
